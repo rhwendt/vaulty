@@ -1,0 +1,15 @@
+# Obsidian workspace settings (user-specific)
+.obsidian/workspace.json
+.obsidian/workspace
+
+# Obsidian cache
+.obsidian/cache/
+
+# Trash
+.trash/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
