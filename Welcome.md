@@ -1,5 +1,5 @@
-# Welcome to your vault
+This is your new *vault*.
 
-This vault is synced with GitHub at: https://github.com/rhwendt/vaulty
+Make a note of something, [[create a link]], or try [the Importer](https://help.obsidian.md/Plugins/Importer)!
 
-Start creating your notes here!
+When you're ready, delete this note and make the vault your own.
