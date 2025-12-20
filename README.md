@@ -14,6 +14,71 @@ Vaulty is an **Obsidian vault** that serves as a comprehensive context memory sy
 
 📊 **[View System Interaction Diagrams](INTERACTION-DIAGRAM.md)** - Visual guide to how agents collaborate
 
+## 🔀 Using This Template Repository
+
+Vaulty is designed as a **GitHub Template Repository** for personal use. Choose your path:
+
+### 👤 For Personal Use (Recommended)
+
+**This is the most common use case** - create your own copy to customize for your workflow:
+
+1. **Click "Use this template"** button on GitHub (or [use this link](../../generate))
+2. Choose a name for your repository (e.g., `my-vaulty`, `claude-memory`)
+3. Select **Private** or **Public** (your choice)
+4. Click "Create repository from template"
+5. Clone your new repository and customize it
+
+**Benefits:**
+- ✅ Your own independent copy (no fork relationship)
+- ✅ Customize agents, memory files, and config for your needs
+- ✅ Add your personal projects without cluttering the template
+- ✅ Pull updates from the template when you want them
+- ✅ No expectation to contribute back (unless you want to!)
+
+### 🤝 For Contributing to Vaulty Framework
+
+**Want to improve Vaulty for everyone?** We welcome contributions!
+
+1. **Fork this repository** (not "Use this template")
+2. Make improvements to core framework files (agents, memory files, templates)
+3. Submit a Pull Request
+4. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
+
+**What to contribute:**
+- New memory files for domains (security, performance, etc.)
+- New programming language guides
+- Improved agent workflows
+- Bug fixes and documentation
+- Example projects and use cases
+
+**What NOT to contribute:**
+- Your personal `config.md` settings
+- Your specific projects
+- Workflow tweaks specific to your needs
+
+### 🔄 Staying Updated
+
+If you used the template and want to pull in new improvements:
+
+```bash
+# Add the original template as a remote (one time)
+git remote add template https://github.com/rhwendt/vaulty.git
+
+# Check what's new in the template
+git fetch template
+git show template/main:CHANGELOG.md
+
+# Merge updates when ready
+git merge template/main --allow-unrelated-histories
+
+# Resolve any conflicts (usually just in framework files)
+```
+
+**Track updates:**
+- 📋 View **[CHANGELOG.md](CHANGELOG.md)** for version history
+- ⭐ Watch releases on GitHub for notifications
+- 📌 Check [GitHub Releases](../../releases) for new versions
+
 ## 🚀 Quick Start
 
 ### 1. Clone This Repository
@@ -119,6 +184,7 @@ vaulty/
 │   ├── auditor-agent.md        # Code review and security specialist
 │   ├── documentation-agent.md  # Documentation specialist
 │   ├── project-manager-agent.md # Project management specialist
+│   ├── project-designer-agent.md # New project planning and design specialist
 │   ├── architect-agent.md      # Architecture and design specialist
 │   ├── deployment-agent.md     # Deployment and DevOps specialist
 │   ├── debugger-agent.md       # Debugging and troubleshooting specialist
@@ -161,11 +227,36 @@ Claude will automatically invoke specialized agents based on trigger words:
 
 | Agent | Purpose | Trigger Words |
 |-------|---------|---------------|
+| **Project Designer** | Design new projects from requirements | "help me design a project", "I want to build", "plan a project" |
 | **Project Manager** | Manage projects and tasks | "create project", "track task", "status" |
 | **Architect** | High-level design decisions | "architecture", "design system", "ADR" |
 | **Documentation** | Create/update docs | "document", "README", "write docs" |
 
 ## 🔄 Agent Collaboration Workflows
+
+### New Project Design (From Scratch)
+
+When you ask Claude to help design a new project:
+
+```
+1. Project Designer → Gathers requirements and asks clarifying questions
+   ↓
+2. Project Designer → Explores technology options and trade-offs
+   ↓
+3. Project Designer → Designs architecture and creates roadmap
+   ↓
+4. Architect → Creates ADRs for key technology decisions
+   ↓
+5. Project Manager → Sets up Vaulty project structure and tasks
+   ↓
+6. Developer → Ready to begin implementation
+
+Example: "I want to build a task management API with real-time updates"
+→ Project Designer asks about scale, users, tech preferences
+→ Explores options (WebSockets vs SSE, PostgreSQL vs MongoDB)
+→ Creates architecture diagram and implementation roadmap
+→ Hands off to other agents for execution
+```
 
 ### Complete Feature Development
 
@@ -404,16 +495,215 @@ Organize with tags: #task #status/in-progress #priority/high
 > Caution: Pay attention to this
 ```
 
+## 🔌 Recommended Obsidian Plugins & Settings
+
+Enhance your Vaulty experience with these Obsidian plugins and settings. All are **optional** but highly recommended for power users.
+
+### Essential Plugins
+
+#### **Dataview** (Highly Recommended)
+Query and display data from your vault dynamically.
+
+**Use cases for Vaulty:**
+- List all agents with their trigger patterns
+- Show all projects with their current status
+- Display tasks by priority or status
+- Generate agent usage reports
+
+**Example query:**
+```dataview
+TABLE role, trigger-patterns
+FROM "agents"
+WHERE contains(file.tags, "#agent")
+```
+
+**Install:** Settings → Community Plugins → Browse → Search "Dataview"
+
+#### **Templater** (Recommended)
+More powerful templating than core Templates plugin.
+
+**Use cases for Vaulty:**
+- Auto-generate project names with dates
+- Insert current task count
+- Dynamic agent invocations
+- Auto-fill project metadata
+
+**Install:** Settings → Community Plugins → Browse → Search "Templater"
+
+#### **Tag Wrangler** (Recommended)
+Better tag management and navigation.
+
+**Use cases for Vaulty:**
+- Quickly rename tags across all files (e.g., `#status/todo` → `#status/pending`)
+- View tag hierarchy for agent categories
+- Search and filter by nested tags
+- Clean up unused tags
+
+**Install:** Settings → Community Plugins → Browse → Search "Tag Wrangler"
+
+### Project Management Plugins
+
+#### **Tasks**
+Advanced task management with queries and filters.
+
+**Use cases for Vaulty:**
+- Track TODOs across all project files
+- Filter tasks by due date, priority, status
+- Generate task reports per project
+- Recurring tasks for maintenance work
+
+**Install:** Settings → Community Plugins → Browse → Search "Tasks"
+
+#### **Kanban**
+Visual kanban board for project management.
+
+**Use cases for Vaulty:**
+- Visualize project task flow (Todo → In Progress → Done)
+- Drag-and-drop task management
+- Board per project or one global board
+- Alternative to markdown task lists
+
+**Install:** Settings → Community Plugins → Browse → Search "Kanban"
+
+### Navigation Plugins
+
+#### **Recent Files**
+Quick access to recently edited files.
+
+**Use cases for Vaulty:**
+- Quickly return to agents you're actively working with
+- Access recently referenced memory files
+- Navigate between project files efficiently
+
+**Install:** Settings → Community Plugins → Browse → Search "Recent Files"
+
+#### **Quick Switcher++**
+Enhanced file switcher with symbols and headings.
+
+**Use cases for Vaulty:**
+- Jump to specific agent sections quickly
+- Search within memory file headings
+- Navigate to project task sections
+
+**Install:** Settings → Community Plugins → Browse → Search "Quick Switcher++"
+
+### Visualization Plugins
+
+#### **Excalidraw**
+Create diagrams and sketches directly in Obsidian.
+
+**Use cases for Vaulty:**
+- Extend interaction diagrams with custom flows
+- Sketch architecture designs before implementing
+- Visual project planning
+- Whiteboard with Claude for complex planning
+
+**Install:** Settings → Community Plugins → Browse → Search "Excalidraw"
+
+#### **Graph Analysis**
+Enhanced graph view with better filtering.
+
+**Use cases for Vaulty:**
+- Visualize connections between agents and memory files
+- Identify orphaned files
+- Understand project dependencies
+- See agent collaboration patterns
+
+**Install:** Settings → Community Plugins → Browse → Search "Graph Analysis"
+
+### Recommended Core Settings
+
+Enable these built-in Obsidian features (already configured in this template):
+
+#### **Graph View** ✅ Enabled
+- View connections between agents and memory files
+- Settings → Graph View → Enable filters by tag
+- Useful for understanding agent relationships
+
+#### **Templates** ✅ Enabled
+- Templates folder: `projects/_templates/`
+- Use for creating new projects and tasks
+- Settings → Templates → Template folder location
+
+#### **Tag Pane** ✅ Enabled
+- View all tags in vault (#agent, #memory, #task)
+- Click tags to see all matching files
+- Useful for navigating agent categories
+
+#### **Daily Notes** ✅ Enabled (Optional Use)
+- Could be used for session logs with Claude
+- Track what agents were used each day
+- Document decisions and outcomes
+
+#### **Canvas** ✅ Enabled
+- Create visual boards connecting agents, memory files, and projects
+- Alternative to text-based project planning
+- Drag and link related files visually
+
+### Optimal Settings Configuration
+
+**File Explorer Settings:**
+```
+Settings → Files and Links
+✅ Automatically update internal links
+✅ Default location for new notes: Same folder as current file
+✅ New link format: Relative path to file
+```
+
+**Editor Settings:**
+```
+Settings → Editor
+✅ Show line numbers (helpful when working with Claude)
+✅ Readable line length (easier to read long memory files)
+✅ Strict line breaks (markdown compatibility)
+```
+
+**Appearance Settings:**
+```
+Settings → Appearance
+- Enable/disable: Your preference
+- Recommended: Use a theme that supports callouts and tags well
+- Popular themes: Minimal, Things, California Coast
+```
+
+### Quick Start: Installing Plugins
+
+1. **Enable Community Plugins**
+   - Settings → Community Plugins → Turn off Restricted Mode
+   - Click "Browse" to search for plugins
+
+2. **Install Essential Plugins**
+   - Start with: Dataview, Tag Wrangler, Recent Files
+   - Add others as needed based on your workflow
+
+3. **Configure Plugin Settings**
+   - Dataview: Enable JavaScript queries (optional)
+   - Templater: Set template folder to `projects/_templates/`
+   - Tasks: Configure global filter if needed
+
+### Plugin Maintenance
+
+**Keep plugins updated:**
+- Settings → Community Plugins → Check for updates regularly
+- Updates often include bug fixes and new features
+
+**Disable unused plugins:**
+- Improves vault performance
+- Reduces potential conflicts
+
 ## 🤝 Contributing
 
-This is a template repository. Customize it for your needs!
+This is a **template repository** - feel free to use it for personal projects!
 
-Ideas for contributions:
+**Want to contribute to the Vaulty framework itself?** We welcome:
 - Additional memory files for other domains
+- New programming language guides
 - Custom agents for specialized tasks
-- Improved templates
-- Example projects
-- Workflow automations
+- Improved templates and examples
+- Documentation improvements
+- Bug fixes
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for detailed contribution guidelines.
 
 ## 📄 License
 
