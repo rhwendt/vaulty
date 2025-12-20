@@ -7,9 +7,12 @@ A template repository designed to give Claude persistent context memory and spec
 Vaulty is an **Obsidian vault** that serves as a comprehensive context memory system for Claude. It provides:
 
 - **Memory Files**: Best practices and guidelines for different domains (git, testing, deployment, etc.)
+- **Language-Specific Best Practices**: Detailed guides for 12 programming languages with idioms, patterns, and tooling
 - **Specialized Agents**: Expert personas that Claude can invoke for specific tasks
 - **Project Management**: Structured system for tracking projects and tasks
 - **Agent Collaboration**: Workflows where agents work together (Developer → Tester → Auditor → Git)
+
+📊 **[View System Interaction Diagrams](INTERACTION-DIAGRAM.md)** - Visual guide to how agents collaborate
 
 ## 🚀 Quick Start
 
@@ -94,7 +97,20 @@ vaulty/
 │   ├── testing-qa.md           # Testing and QA practices
 │   ├── deployment.md           # Deployment procedures
 │   ├── communication.md        # Communication standards
-│   └── architecture-design.md  # Architecture patterns and principles
+│   ├── architecture-design.md  # Architecture patterns and principles
+│   └── languages/              # Language-specific best practices
+│       ├── python.md           # Python idioms, PEP 8, type hints
+│       ├── javascript.md       # JavaScript ES6+, async patterns
+│       ├── typescript.md       # TypeScript types, strict mode
+│       ├── go.md               # Go idioms, goroutines, channels
+│       ├── rust.md             # Rust ownership, borrowing, traits
+│       ├── java.md             # Java patterns, Spring Boot
+│       ├── csharp.md           # C# async/await, LINQ, .NET
+│       ├── cpp.md              # C++ modern features, RAII
+│       ├── php.md              # PHP 8+, Laravel patterns
+│       ├── ruby.md             # Ruby idioms, Rails patterns
+│       ├── swift.md            # Swift optionals, protocols
+│       └── kotlin.md           # Kotlin null safety, coroutines
 │
 ├── agents/                     # Specialized agent prompts
 │   ├── git-agent.md            # Git operations specialist
@@ -193,6 +209,36 @@ Memory files contain best practices that agents reference:
 - **project-management.md**: Task tracking, project organization
 - **documentation.md**: Documentation standards
 - **communication.md**: Communication templates
+
+### 🔤 Language-Specific Best Practices
+
+Each language has its own comprehensive guide in `memory/languages/`:
+
+| Language | Key Topics |
+|----------|------------|
+| **Python** | PEP 8, type hints, pytest, dataclasses, async/await |
+| **JavaScript** | ES6+, async/promises, Node.js, Jest, modern patterns |
+| **TypeScript** | Type system, strict mode, generics, decorators |
+| **Go** | Goroutines, channels, error handling, interfaces, table tests |
+| **Rust** | Ownership, borrowing, Result/Option, traits, cargo |
+| **Java** | Streams, Optional, Spring Boot, JUnit 5, modern features |
+| **C#** | Async/await, LINQ, nullable types, xUnit, .NET patterns |
+| **C++** | Modern C++, RAII, smart pointers, move semantics |
+| **PHP** | PHP 8+, Laravel, type safety, PSR standards, PHPUnit |
+| **Ruby** | Ruby idioms, Rails, RSpec, metaprogramming |
+| **Swift** | Optionals, protocols, SwiftUI, value types, XCTest |
+| **Kotlin** | Null safety, coroutines, sealed classes, data classes |
+
+**What's included in each language guide:**
+- ✅ Language philosophy and idioms
+- ✅ Naming conventions and code style
+- ✅ Error handling patterns
+- ✅ Testing best practices
+- ✅ Framework-specific patterns
+- ✅ Linting and formatting tools
+- ✅ Common anti-patterns to avoid
+- ✅ Performance tips
+- ✅ Official resources and style guides
 
 ## 🎯 Usage Examples
 
