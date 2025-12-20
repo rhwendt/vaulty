@@ -1,0 +1,363 @@
+# Vaulty - Context Memory System for Claude
+
+A template repository designed to give Claude persistent context memory and specialized agent capabilities. This system enables Claude to maintain consistent workflows, reference best practices, and manage projects effectively across sessions.
+
+## 🎯 What is Vaulty?
+
+Vaulty is an **Obsidian vault** that serves as a comprehensive context memory system for Claude. It provides:
+
+- **Memory Files**: Best practices and guidelines for different domains (git, testing, deployment, etc.)
+- **Specialized Agents**: Expert personas that Claude can invoke for specific tasks
+- **Project Management**: Structured system for tracking projects and tasks
+- **Agent Collaboration**: Workflows where agents work together (Developer → Tester → Auditor → Git)
+
+## 🚀 Quick Start
+
+### 1. Clone This Repository
+
+```bash
+git clone https://github.com/yourusername/vaulty.git
+cd vaulty
+```
+
+### 2. Open in Obsidian
+
+1. Download [Obsidian](https://obsidian.md/)
+2. Open Obsidian
+3. Click "Open folder as vault"
+4. Select the `vaulty` directory
+
+### 3. Start Using with Claude
+
+When interacting with Claude in this repository:
+
+**For Git Operations:**
+```
+"Commit these changes to git"
+```
+→ Claude will use the Git Agent and reference `memory/git-workflow.md`
+
+**For Development:**
+```
+"Write a Python script to process JSON files"
+```
+→ Claude will use Developer Agent → Tester Agent → Auditor Agent → Git Agent workflow
+
+**For Project Management:**
+```
+"Create a new project for building a REST API"
+```
+→ Claude will use Project Manager Agent and create structured project files
+
+## 📁 Repository Structure
+
+```
+vaulty/
+├── .claude.md                  # Main instructions for Claude (trigger words, workflows)
+├── README.md                   # This file
+├── .obsidian/                  # Obsidian configuration
+│
+├── memory/                     # Context memory files (best practices)
+│   ├── git-workflow.md         # Git operations and standards
+│   ├── project-management.md   # Project and task management
+│   ├── documentation.md        # Documentation standards
+│   ├── code-review.md          # Code review guidelines
+│   ├── testing-qa.md           # Testing and QA practices
+│   ├── deployment.md           # Deployment procedures
+│   ├── communication.md        # Communication standards
+│   └── architecture-design.md  # Architecture patterns and principles
+│
+├── agents/                     # Specialized agent prompts
+│   ├── git-agent.md            # Git operations specialist
+│   ├── developer-agent.md      # Code development specialist
+│   ├── tester-agent.md         # Testing and QA specialist
+│   ├── auditor-agent.md        # Code review and security specialist
+│   ├── documentation-agent.md  # Documentation specialist
+│   ├── project-manager-agent.md # Project management specialist
+│   ├── architect-agent.md      # Architecture and design specialist
+│   ├── deployment-agent.md     # Deployment and DevOps specialist
+│   ├── debugger-agent.md       # Debugging and troubleshooting specialist
+│   └── software-design-agent.md # Design patterns specialist
+│
+└── projects/                   # Your projects go here
+    ├── _templates/             # Templates for new projects and tasks
+    │   ├── project-overview-template.md
+    │   └── task-template.md
+    │
+    └── example-project/        # Example project structure
+        ├── overview.md         # Project overview and status
+        └── tasks/              # Individual task files
+            ├── task-001-implement-auth.md
+            └── task-002-build-api.md
+```
+
+## 🤖 Specialized Agents
+
+Claude will automatically invoke specialized agents based on trigger words:
+
+### Development Workflow Agents
+
+| Agent | Purpose | Trigger Words |
+|-------|---------|---------------|
+| **Developer** | Write and modify code | "write", "implement", "create script", "fix bug" |
+| **Tester** | Write and run tests | "test", "write tests", "check coverage" |
+| **Auditor** | Review code for quality/security | "review", "audit", "check for issues" |
+| **Software Design** | Apply design patterns | "design pattern", "refactor", "improve design" |
+
+### Operations Agents
+
+| Agent | Purpose | Trigger Words |
+|-------|---------|---------------|
+| **Git** | Version control operations | "commit", "push", "pull request", "merge" |
+| **Deployment** | Deploy and release | "deploy", "release", "rollback", "CI/CD" |
+| **Debugger** | Investigate issues | "debug", "error", "bug", "not working" |
+
+### Planning Agents
+
+| Agent | Purpose | Trigger Words |
+|-------|---------|---------------|
+| **Project Manager** | Manage projects and tasks | "create project", "track task", "status" |
+| **Architect** | High-level design decisions | "architecture", "design system", "ADR" |
+| **Documentation** | Create/update docs | "document", "README", "write docs" |
+
+## 🔄 Agent Collaboration Workflows
+
+### Complete Feature Development
+
+When you ask Claude to implement a feature, agents collaborate:
+
+```
+1. Project Manager → Creates/tracks task
+2. Architect → Designs high-level architecture (if major)
+3. Software Design → Designs code structure
+4. Developer → Implements code
+5. Tester → Writes and runs tests
+   ↓ (if tests fail, back to Developer)
+6. Auditor → Reviews for quality and security
+   ↓ (if review fails, back to Developer)
+7. Git → Commits and pushes code
+8. Documentation → Updates docs
+9. Deployment → Deploys to environments
+10. Project Manager → Marks task complete
+```
+
+### Quick Bug Fix
+
+```
+1. Debugger → Investigates and finds root cause
+2. Developer → Implements fix
+3. Tester → Adds regression test
+4. Auditor → Reviews fix
+5. Git → Commits fix
+6. Deployment → Deploys hotfix
+```
+
+## 📝 Memory Files
+
+Memory files contain best practices that agents reference:
+
+- **git-workflow.md**: How to commit, branch, create PRs
+- **testing-qa.md**: Testing standards, coverage requirements
+- **code-review.md**: Code review checklist, security concerns
+- **deployment.md**: Deployment procedures, rollback plans
+- **architecture-design.md**: Design patterns, SOLID principles
+- **project-management.md**: Task tracking, project organization
+- **documentation.md**: Documentation standards
+- **communication.md**: Communication templates
+
+## 🎯 Usage Examples
+
+### Example 1: Start a New Project
+
+```
+You: "Create a new project for building a task management API"
+
+Claude will:
+1. Use Project Manager Agent
+2. Create projects/task-management-api/
+3. Create overview.md from template
+4. Create initial task breakdown
+5. Reference memory/project-management.md for structure
+```
+
+### Example 2: Implement a Feature
+
+```
+You: "Write a Python function to validate email addresses"
+
+Claude will:
+1. Use Developer Agent (references memory/architecture-design.md)
+2. Write the function with proper error handling
+3. Use Tester Agent (references memory/testing-qa.md)
+4. Write comprehensive tests
+5. Use Auditor Agent (references memory/code-review.md)
+6. Review for security and quality
+7. Use Git Agent (references memory/git-workflow.md)
+8. Commit with proper message
+```
+
+### Example 3: Deploy Changes
+
+```
+You: "Deploy this to production"
+
+Claude will:
+1. Use Deployment Agent
+2. Reference memory/deployment.md
+3. Run pre-deployment checklist
+4. Execute deployment steps
+5. Monitor deployment
+6. Report status
+```
+
+## 🔧 Customization
+
+### Adding New Memory Files
+
+Create a new file in `memory/` for your domain:
+
+```markdown
+#memory/your-domain
+
+# Your Domain Best Practices
+
+## When to Use
+...
+
+## Best Practices
+...
+```
+
+### Adding Custom Agents
+
+Create a new agent in `agents/`:
+
+```markdown
+#agent #your-specialty
+
+# Your Custom Agent
+
+## Role
+What this agent does...
+
+## Key Memory Files
+- [[memory/relevant-file]]
+
+## Trigger Patterns
+- "trigger word 1"
+- "trigger word 2"
+```
+
+Then update `.claude.md` to include your new agent's trigger patterns.
+
+### Creating Projects
+
+Use the templates in `projects/_templates/`:
+
+```bash
+# Create new project structure
+mkdir -p projects/my-new-project/tasks
+
+# Copy templates
+cp projects/_templates/project-overview-template.md projects/my-new-project/overview.md
+```
+
+## 🌟 Benefits
+
+### For Individual Developers
+- ✅ Consistent git workflow across projects
+- ✅ Always-applied code review standards
+- ✅ Systematic testing approach
+- ✅ Structured project management
+- ✅ Best practices at your fingertips
+
+### For Teams
+- ✅ Shared best practices and standards
+- ✅ Consistent code quality
+- ✅ Onboarding documentation
+- ✅ Collaborative decision records (ADRs)
+- ✅ Standardized workflows
+
+### For Claude
+- ✅ Persistent context across sessions
+- ✅ Domain expertise on demand
+- ✅ Systematic problem-solving workflows
+- ✅ Quality gates (testing, review) before commits
+- ✅ Collaborative agent patterns
+
+## 📋 Best Practices
+
+### ✅ Do
+
+- Reference memory files before operations
+- Use appropriate agents for tasks
+- Follow agent collaboration workflows
+- Update project/task status regularly
+- Document decisions in ADRs
+- Test before committing
+- Review before merging
+
+### ❌ Don't
+
+- Skip agent workflows (especially Developer → Tester → Auditor)
+- Commit without testing
+- Deploy without consulting deployment checklist
+- Make architectural decisions without documentation
+- Skip referencing memory files
+
+## 🔗 Obsidian Features
+
+This vault uses Obsidian-specific features:
+
+### Wiki Links
+```markdown
+Link to other files: [[memory/git-workflow]]
+Link to sections: [[project-overview#goals]]
+```
+
+### Tags
+```markdown
+Organize with tags: #task #status/in-progress #priority/high
+```
+
+### Callouts
+```markdown
+> [!NOTE]
+> Important information here
+
+> [!WARNING]
+> Caution: Pay attention to this
+```
+
+## 🤝 Contributing
+
+This is a template repository. Customize it for your needs!
+
+Ideas for contributions:
+- Additional memory files for other domains
+- Custom agents for specialized tasks
+- Improved templates
+- Example projects
+- Workflow automations
+
+## 📄 License
+
+MIT License - feel free to use this template for your own projects!
+
+## 🎓 Learn More
+
+- [Obsidian Documentation](https://help.obsidian.md/)
+- [Claude Documentation](https://docs.anthropic.com/)
+- For questions or issues with this template, open an issue on GitHub
+
+## 💡 Tips
+
+1. **Start Small**: Begin with one project and gradually adopt the full system
+2. **Customize**: Adapt memory files and agents to your workflow
+3. **Be Consistent**: Use the system regularly for best results
+4. **Review Regularly**: Update memory files as you learn new best practices
+5. **Share**: Use as a team template for consistent standards
+
+---
+
+**Made for Claude** | **Template Repository** | **Obsidian Vault**
