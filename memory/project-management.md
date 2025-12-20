@@ -2,6 +2,15 @@
 
 # Project Management Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal project management preferences:
+> - `team_name`: Your team name
+> - `organization`: Your organization
+> - `team_size`: Team size (solo, small, medium, large)
+> - `sprint_length`: Sprint/iteration length
+> - `code_review_required`: Whether code review is required
+> - `minimum_reviewers`: Number of required reviewers
+
 ## Project Structure
 
 Each project should have:

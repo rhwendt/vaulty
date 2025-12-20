@@ -2,6 +2,14 @@
 
 # Documentation Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal documentation preferences:
+> - `doc_format`: Your preferred documentation format (Markdown, reStructuredText, etc.)
+> - `docstring_style`: Your docstring style (Google, NumPy, Sphinx)
+> - `readme_style`: README template preference (minimal, standard, detailed)
+> - `use_adrs`: Whether you use Architecture Decision Records
+> - `adr_directory`: Where you store ADRs
+
 ## Documentation Philosophy
 
 - **Write for your future self** - You'll forget context

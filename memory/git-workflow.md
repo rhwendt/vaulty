@@ -2,9 +2,18 @@
 
 # Git Workflow Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal git preferences:
+> - `default_branch`: Your preferred default branch name
+> - `repos_directory`: Where you store your repositories
+> - `git_workflow`: Your preferred workflow (feature-branch, gitflow, etc.)
+> - `commit_style`: Your commit message style preference
+> - `sign_commits`: Whether you sign commits
+> - `git_protocol`: SSH vs HTTPS preference
+
 ## Branch Strategy
 
-- **Main Branch**: `main` - production-ready code only
+- **Main Branch**: `{config.default_branch}` (check your [[config]] - typically `main` or `master`) - production-ready code only
 - **Feature Branches**: `feature/descriptive-name` or `claude/task-name-{sessionId}`
 - **Bug Fixes**: `fix/issue-description`
 - **Hotfixes**: `hotfix/critical-fix`
