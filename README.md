@@ -469,6 +469,202 @@ Organize with tags: #task #status/in-progress #priority/high
 > Caution: Pay attention to this
 ```
 
+## 🔌 Recommended Obsidian Plugins & Settings
+
+Enhance your Vaulty experience with these Obsidian plugins and settings. All are **optional** but highly recommended for power users.
+
+### Essential Plugins
+
+#### **Dataview** (Highly Recommended)
+Query and display data from your vault dynamically.
+
+**Use cases for Vaulty:**
+- List all agents with their trigger patterns
+- Show all projects with their current status
+- Display tasks by priority or status
+- Generate agent usage reports
+
+**Example query:**
+```dataview
+TABLE role, trigger-patterns
+FROM "agents"
+WHERE contains(file.tags, "#agent")
+```
+
+**Install:** Settings → Community Plugins → Browse → Search "Dataview"
+
+#### **Templater** (Recommended)
+More powerful templating than core Templates plugin.
+
+**Use cases for Vaulty:**
+- Auto-generate project names with dates
+- Insert current task count
+- Dynamic agent invocations
+- Auto-fill project metadata
+
+**Install:** Settings → Community Plugins → Browse → Search "Templater"
+
+#### **Tag Wrangler** (Recommended)
+Better tag management and navigation.
+
+**Use cases for Vaulty:**
+- Quickly rename tags across all files (e.g., `#status/todo` → `#status/pending`)
+- View tag hierarchy for agent categories
+- Search and filter by nested tags
+- Clean up unused tags
+
+**Install:** Settings → Community Plugins → Browse → Search "Tag Wrangler"
+
+### Project Management Plugins
+
+#### **Tasks**
+Advanced task management with queries and filters.
+
+**Use cases for Vaulty:**
+- Track TODOs across all project files
+- Filter tasks by due date, priority, status
+- Generate task reports per project
+- Recurring tasks for maintenance work
+
+**Install:** Settings → Community Plugins → Browse → Search "Tasks"
+
+#### **Kanban**
+Visual kanban board for project management.
+
+**Use cases for Vaulty:**
+- Visualize project task flow (Todo → In Progress → Done)
+- Drag-and-drop task management
+- Board per project or one global board
+- Alternative to markdown task lists
+
+**Install:** Settings → Community Plugins → Browse → Search "Kanban"
+
+### Navigation Plugins
+
+#### **Recent Files**
+Quick access to recently edited files.
+
+**Use cases for Vaulty:**
+- Quickly return to agents you're actively working with
+- Access recently referenced memory files
+- Navigate between project files efficiently
+
+**Install:** Settings → Community Plugins → Browse → Search "Recent Files"
+
+#### **Quick Switcher++**
+Enhanced file switcher with symbols and headings.
+
+**Use cases for Vaulty:**
+- Jump to specific agent sections quickly
+- Search within memory file headings
+- Navigate to project task sections
+
+**Install:** Settings → Community Plugins → Browse → Search "Quick Switcher++"
+
+### Visualization Plugins
+
+#### **Excalidraw**
+Create diagrams and sketches directly in Obsidian.
+
+**Use cases for Vaulty:**
+- Extend interaction diagrams with custom flows
+- Sketch architecture designs before implementing
+- Visual project planning
+- Whiteboard with Claude for complex planning
+
+**Install:** Settings → Community Plugins → Browse → Search "Excalidraw"
+
+#### **Graph Analysis**
+Enhanced graph view with better filtering.
+
+**Use cases for Vaulty:**
+- Visualize connections between agents and memory files
+- Identify orphaned files
+- Understand project dependencies
+- See agent collaboration patterns
+
+**Install:** Settings → Community Plugins → Browse → Search "Graph Analysis"
+
+### Recommended Core Settings
+
+Enable these built-in Obsidian features (already configured in this template):
+
+#### **Graph View** ✅ Enabled
+- View connections between agents and memory files
+- Settings → Graph View → Enable filters by tag
+- Useful for understanding agent relationships
+
+#### **Templates** ✅ Enabled
+- Templates folder: `projects/_templates/`
+- Use for creating new projects and tasks
+- Settings → Templates → Template folder location
+
+#### **Tag Pane** ✅ Enabled
+- View all tags in vault (#agent, #memory, #task)
+- Click tags to see all matching files
+- Useful for navigating agent categories
+
+#### **Daily Notes** ✅ Enabled (Optional Use)
+- Could be used for session logs with Claude
+- Track what agents were used each day
+- Document decisions and outcomes
+
+#### **Canvas** ✅ Enabled
+- Create visual boards connecting agents, memory files, and projects
+- Alternative to text-based project planning
+- Drag and link related files visually
+
+### Optimal Settings Configuration
+
+**File Explorer Settings:**
+```
+Settings → Files and Links
+✅ Automatically update internal links
+✅ Default location for new notes: Same folder as current file
+✅ New link format: Relative path to file
+```
+
+**Editor Settings:**
+```
+Settings → Editor
+✅ Show line numbers (helpful when working with Claude)
+✅ Readable line length (easier to read long memory files)
+✅ Strict line breaks (markdown compatibility)
+```
+
+**Appearance Settings:**
+```
+Settings → Appearance
+- Enable/disable: Your preference
+- Recommended: Use a theme that supports callouts and tags well
+- Popular themes: Minimal, Things, California Coast
+```
+
+### Quick Start: Installing Plugins
+
+1. **Enable Community Plugins**
+   - Settings → Community Plugins → Turn off Restricted Mode
+   - Click "Browse" to search for plugins
+
+2. **Install Essential Plugins**
+   - Start with: Dataview, Tag Wrangler, Recent Files
+   - Add others as needed based on your workflow
+
+3. **Configure Plugin Settings**
+   - Dataview: Enable JavaScript queries (optional)
+   - Templater: Set template folder to `projects/_templates/`
+   - Tasks: Configure global filter if needed
+
+### Plugin Maintenance
+
+**Keep plugins updated:**
+- Settings → Community Plugins → Check for updates regularly
+- Updates often include bug fixes and new features
+
+**Disable unused plugins:**
+- Improves vault performance
+- Reduces potential conflicts
+
 ## 🤝 Contributing
 
 This is a **template repository** - feel free to use it for personal projects!

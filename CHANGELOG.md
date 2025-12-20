@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Template repository documentation and contribution guidelines
 - GitHub issue templates for bug reports and feature requests
 - Versioning strategy with CHANGELOG
+- Comprehensive Obsidian plugins and settings section in README
+  - Essential plugins (Dataview, Templater, Tag Wrangler)
+  - Project management plugins (Tasks, Kanban)
+  - Navigation plugins (Recent Files, Quick Switcher++)
+  - Visualization plugins (Excalidraw, Graph Analysis)
+  - Recommended core settings configuration
+  - Plugin installation and maintenance guide
 
 ## [1.0.0] - 2025-01-XX
 
