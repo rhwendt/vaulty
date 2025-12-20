@@ -188,25 +188,27 @@ Before handing off to Auditor:
 
 ## Language-Specific Best Practices
 
-### Python
-- Follow PEP 8 style guide
-- Use type hints for function signatures
-- Use descriptive variable names
-- Proper exception handling
-- Virtual environments for dependencies
+**ALWAYS consult language-specific memory files for detailed best practices:**
 
-### JavaScript/TypeScript
-- Use const/let, not var
-- Prefer arrow functions
-- Use async/await over callbacks
-- Proper error handling with try/catch
-- TypeScript types for better safety
+- [[memory/languages/python]] - Python idioms, PEP 8, type hints, testing
+- [[memory/languages/javascript]] - JavaScript ES6+, async patterns, Node.js
+- [[memory/languages/typescript]] - TypeScript types, strict mode, patterns
+- [[memory/languages/go]] - Go idioms, goroutines, error handling, interfaces
+- [[memory/languages/rust]] - Rust ownership, borrowing, error handling, traits
+- [[memory/languages/java]] - Java patterns, Spring Boot, streams, Optional
+- [[memory/languages/csharp]] - C# async/await, LINQ, .NET patterns
+- [[memory/languages/cpp]] - C++ modern features, RAII, smart pointers
+- [[memory/languages/php]] - PHP 8+, Laravel patterns, type safety
+- [[memory/languages/ruby]] - Ruby idioms, Rails patterns, metaprogramming
+- [[memory/languages/swift]] - Swift optionals, protocols, SwiftUI
+- [[memory/languages/kotlin]] - Kotlin null safety, coroutines, data classes
 
-### General
-- Follow language idioms and conventions
-- Use language-standard formatting
-- Leverage standard library when possible
-- Keep dependencies minimal
+**When writing code in any language:**
+1. **Check [[config]]** for user's formatter, linter, and test framework preferences
+2. **Consult the language-specific memory file** before implementing
+3. **Follow language idioms** - write idiomatic code, not translated code
+4. **Use recommended patterns** - each language has preferred patterns
+5. **Apply language-specific linting** - use the tools from config
 
 ## Common Patterns to Follow
 

@@ -63,10 +63,19 @@ terminal: "iTerm2"  # Options: iTerm2, Terminal, Alacritty, etc.
 # Shell
 shell: "zsh"  # Options: zsh, bash, fish, etc.
 
-# Package managers
-package_manager_python: "pip"  # Options: pip, poetry, pipenv
-package_manager_node: "npm"  # Options: npm, yarn, pnpm
-package_manager_system: "brew"  # Options: brew, apt, yum, etc.
+# Package managers by language/platform
+package_manager_python: "pip"  # Options: pip, poetry, pipenv, conda
+package_manager_node: "npm"  # Options: npm, yarn, pnpm, bun
+package_manager_go: "go mod"  # Standard: go mod (built-in)
+package_manager_rust: "cargo"  # Standard: cargo (built-in)
+package_manager_java: "Maven"  # Options: Maven, Gradle
+package_manager_csharp: "NuGet"  # Standard: NuGet (.NET CLI)
+package_manager_cpp: "Conan"  # Options: Conan, vcpkg, CMake
+package_manager_php: "Composer"  # Standard: Composer
+package_manager_ruby: "Bundler"  # Standard: Bundler (gem)
+package_manager_swift: "Swift Package Manager"  # Options: Swift Package Manager, CocoaPods, Carthage
+package_manager_kotlin: "Gradle"  # Options: Gradle, Maven
+package_manager_system: "brew"  # Options: brew, apt, yum, pacman, etc.
 ```
 
 ---
@@ -117,17 +126,38 @@ languages:
   - "Python"
   - "JavaScript"
   - "TypeScript"
+  - "Go"
+  - "Rust"
+  - "Java"
+  - "C#"
+  - "C++"
+  - "PHP"
+  - "Ruby"
+  - "Swift"
+  - "Kotlin"
 
 # Preferred frameworks by language
 frameworks:
-  python: "Flask"  # Options: Flask, Django, FastAPI
-  javascript: "React"  # Options: React, Vue, Angular, Svelte
-  backend: "Node.js"  # Options: Node.js, Flask, Django, Express
+  python: "Flask"  # Options: Flask, Django, FastAPI, Pyramid
+  javascript: "React"  # Options: React, Vue, Angular, Svelte, Next.js
+  typescript: "Next.js"  # Options: Next.js, Nest.js, Angular, Vue
+  go: "Gin"  # Options: Gin, Echo, Fiber, Chi, Gorilla Mux
+  rust: "Actix Web"  # Options: Actix Web, Rocket, Axum, Warp
+  java: "Spring Boot"  # Options: Spring Boot, Quarkus, Micronaut, Jakarta EE
+  csharp: "ASP.NET Core"  # Options: ASP.NET Core, .NET MAUI
+  cpp: "Qt"  # Options: Qt, Boost, POCO
+  php: "Laravel"  # Options: Laravel, Symfony, CodeIgniter, Slim
+  ruby: "Rails"  # Options: Rails, Sinatra, Hanami
+  swift: "SwiftUI"  # Options: SwiftUI, UIKit, Vapor (backend)
+  kotlin: "Spring Boot"  # Options: Spring Boot, Ktor, Android (Jetpack Compose)
+  backend: "Node.js"  # Options: Node.js, Flask, Django, Express, Go, Rust
 
 # Database preferences
-database_relational: "PostgreSQL"  # Options: PostgreSQL, MySQL, SQLite
-database_nosql: "MongoDB"  # Options: MongoDB, Redis, DynamoDB
+database_relational: "PostgreSQL"  # Options: PostgreSQL, MySQL, SQLite, MariaDB, Oracle
+database_nosql: "MongoDB"  # Options: MongoDB, Redis, DynamoDB, Cassandra, CouchDB
 database_cache: "Redis"  # Options: Redis, Memcached
+database_graph: "Neo4j"  # Options: Neo4j, ArangoDB, JanusGraph
+database_timeseries: "InfluxDB"  # Options: InfluxDB, TimescaleDB, Prometheus
 ```
 
 ### Code Style
@@ -139,13 +169,33 @@ indent_size: 4  # Number of spaces (2 or 4 common)
 # Line length
 max_line_length: 100  # Typically 80, 100, or 120
 
-# Code formatter
-formatter_python: "black"  # Options: black, autopep8, yapf
+# Code formatters by language
+formatter_python: "black"  # Options: black, autopep8, yapf, ruff
 formatter_javascript: "prettier"  # Options: prettier, eslint
+formatter_typescript: "prettier"  # Options: prettier, eslint
+formatter_go: "gofmt"  # Options: gofmt, goimports
+formatter_rust: "rustfmt"  # Options: rustfmt
+formatter_java: "google-java-format"  # Options: google-java-format, Eclipse formatter
+formatter_csharp: "dotnet format"  # Options: dotnet format, csharpier
+formatter_cpp: "clang-format"  # Options: clang-format
+formatter_php: "PHP-CS-Fixer"  # Options: PHP-CS-Fixer, phpfmt
+formatter_ruby: "RuboCop"  # Options: RuboCop, Prettier for Ruby
+formatter_swift: "SwiftFormat"  # Options: SwiftFormat, swift-format
+formatter_kotlin: "ktlint"  # Options: ktlint, kotlinter
 
-# Linter
-linter_python: "pylint"  # Options: pylint, flake8, ruff
+# Linters by language
+linter_python: "pylint"  # Options: pylint, flake8, ruff, mypy (type checker)
 linter_javascript: "eslint"  # Options: eslint, standard
+linter_typescript: "eslint"  # Options: eslint, tslint (deprecated)
+linter_go: "golangci-lint"  # Options: golangci-lint, staticcheck, go vet
+linter_rust: "clippy"  # Options: clippy
+linter_java: "checkstyle"  # Options: checkstyle, PMD, SpotBugs
+linter_csharp: "Roslyn analyzers"  # Options: Roslyn analyzers, StyleCop
+linter_cpp: "clang-tidy"  # Options: clang-tidy, cppcheck
+linter_php: "PHPStan"  # Options: PHPStan, Psalm, PHP_CodeSniffer
+linter_ruby: "RuboCop"  # Options: RuboCop, Reek
+linter_swift: "SwiftLint"  # Options: SwiftLint
+linter_kotlin: "ktlint"  # Options: ktlint, detekt
 ```
 
 ---
@@ -154,16 +204,37 @@ linter_javascript: "eslint"  # Options: eslint, standard
 
 ### Testing Preferences
 ```yaml
-# Test framework preferences
-test_framework_python: "pytest"  # Options: pytest, unittest, nose
-test_framework_javascript: "jest"  # Options: jest, mocha, vitest
+# Test framework preferences by language
+test_framework_python: "pytest"  # Options: pytest, unittest, nose2, doctest
+test_framework_javascript: "jest"  # Options: jest, mocha, vitest, jasmine
+test_framework_typescript: "jest"  # Options: jest, vitest, mocha with ts-node
+test_framework_go: "testing"  # Options: testing (built-in), testify, ginkgo
+test_framework_rust: "cargo test"  # Options: cargo test (built-in), rstest
+test_framework_java: "JUnit 5"  # Options: JUnit 5, TestNG, Spock
+test_framework_csharp: "xUnit"  # Options: xUnit, NUnit, MSTest
+test_framework_cpp: "Google Test"  # Options: Google Test, Catch2, Boost.Test
+test_framework_php: "PHPUnit"  # Options: PHPUnit, Pest, Codeception
+test_framework_ruby: "RSpec"  # Options: RSpec, Minitest, Test::Unit
+test_framework_swift: "XCTest"  # Options: XCTest, Quick & Nimble
+test_framework_kotlin: "JUnit 5"  # Options: JUnit 5, Kotest, Spek
 
 # Coverage requirements
 minimum_coverage: 70  # Percentage (e.g., 70, 80, 90)
 critical_path_coverage: 90  # Coverage for critical code paths
 
-# Test file naming
-test_file_pattern: "test_*.py"  # Options: test_*.py, *_test.py, *.test.js
+# Test file naming patterns by language
+test_file_pattern_python: "test_*.py"  # Options: test_*.py, *_test.py
+test_file_pattern_javascript: "*.test.js"  # Options: *.test.js, *.spec.js
+test_file_pattern_typescript: "*.test.ts"  # Options: *.test.ts, *.spec.ts
+test_file_pattern_go: "*_test.go"  # Standard: *_test.go
+test_file_pattern_rust: "tests/"  # Standard: tests/ directory or #[cfg(test)] modules
+test_file_pattern_java: "*Test.java"  # Options: *Test.java, *Tests.java
+test_file_pattern_csharp: "*Tests.cs"  # Options: *Tests.cs, *Test.cs
+test_file_pattern_cpp: "*_test.cpp"  # Options: *_test.cpp, *Test.cpp
+test_file_pattern_php: "*Test.php"  # Standard: *Test.php
+test_file_pattern_ruby: "*_spec.rb"  # Standard: *_spec.rb (RSpec)
+test_file_pattern_swift: "*Tests.swift"  # Standard: *Tests.swift
+test_file_pattern_kotlin: "*Test.kt"  # Standard: *Test.kt
 ```
 
 ---
