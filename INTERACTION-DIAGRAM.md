@@ -32,10 +32,10 @@ flowchart TD
     Step3 --> Workflow
     Workflow --> Agents
 
-    style User fill:#e1f5ff
-    style Claude fill:#fff4e1
-    style Workflow fill:#e8f5e9
-    style Agents fill:#f3e5f5
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style Claude fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style Workflow fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Agents fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
 ```
 
 ## 2. Detailed Agent Collaboration Workflow
@@ -85,11 +85,11 @@ flowchart TD
     AuditDone --> GitAgent
     GitDone --> Result
 
-    style DevAgent fill:#e3f2fd
-    style TestAgent fill:#f3e5f5
-    style AuditAgent fill:#fff3e0
-    style GitAgent fill:#e8f5e9
-    style Result fill:#c8e6c9
+    style DevAgent fill:#64b5f6,stroke:#1565c0,stroke-width:2px
+    style TestAgent fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
+    style AuditAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Result fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
 ```
 
 ## 3. Configuration Flow Through System
@@ -137,11 +137,11 @@ flowchart TB
     ClaudeMD -.-> ClaudeDetails
     Claude -.-> ClaudeAI
 
-    style Config fill:#ffd54f,stroke:#f57f17,stroke-width:3px
-    style Memory fill:#e1f5ff
-    style Agents fill:#f3e5f5
-    style ClaudeMD fill:#fff3e0
-    style Claude fill:#c8e6c9
+    style Config fill:#ffca28,stroke:#f57f17,stroke-width:4px,color:#000
+    style Memory fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style Agents fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
+    style ClaudeMD fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style Claude fill:#81c784,stroke:#2e7d32,stroke-width:2px
 ```
 
 ## 4. Memory Files & Agent Relationships
@@ -168,6 +168,8 @@ graph TB
         PMAgent["📊 Project Mgr Agent"]
         DocsAgent["📝 Documentation Agent"]
         DebugAgent["🐛 Debugger Agent"]
+        ArchAgent["🏛️ Architect Agent"]
+        DesignAgent["🎨 Software Design Agent"]
     end
 
     GitWF -.->|Referenced by| GitAgent
@@ -188,16 +190,22 @@ graph TB
 
     Comm -.->|Referenced by| DebugAgent
 
-    style MemoryFiles fill:#e8f5e9
-    style Agents fill:#e3f2fd
-    style GitWF fill:#fff9c4
-    style ProjMgmt fill:#fff9c4
-    style TestQA fill:#fff9c4
-    style Deploy fill:#fff9c4
-    style Docs fill:#fff9c4
-    style CodeRev fill:#fff9c4
-    style Comm fill:#fff9c4
-    style ArchDesign fill:#fff9c4
+    ArchDesign -.->|Referenced by| ArchAgent
+    ProjMgmt -.->|Referenced by| ArchAgent
+
+    ArchDesign -.->|Referenced by| DesignAgent
+    CodeRev -.->|Referenced by| DesignAgent
+
+    style MemoryFiles fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Agents fill:#64b5f6,stroke:#1565c0,stroke-width:2px
+    style GitWF fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style ProjMgmt fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style TestQA fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style Deploy fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style Docs fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style CodeRev fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style Comm fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style ArchDesign fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
 ```
 
 ## 5. Quick Example Interactions
@@ -224,9 +232,9 @@ flowchart TD
 
     User --> Read --> Trigger --> GitAgent --> Done
 
-    style User fill:#e1f5ff
-    style GitAgent fill:#e8f5e9
-    style Done fill:#c8e6c9
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
 ```
 
 ### Example B: "Deploy to production"
@@ -251,9 +259,9 @@ flowchart TD
 
     User --> Read --> Trigger --> DeployAgent --> Done
 
-    style User fill:#e1f5ff
-    style DeployAgent fill:#fff3e0
-    style Done fill:#c8e6c9
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style DeployAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
 ```
 
 ### Example C: "Fix this bug"
@@ -310,14 +318,141 @@ flowchart TD
     AuditAgent --> Handoff4 --> GitAgent
     GitAgent --> Done
 
-    style User fill:#e1f5ff
-    style DebugAgent fill:#ffebee
-    style DevAgent fill:#e3f2fd
-    style TestAgent fill:#f3e5f5
-    style AuditAgent fill:#fff3e0
-    style GitAgent fill:#e8f5e9
-    style Done fill:#c8e6c9
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style DebugAgent fill:#ef5350,stroke:#b71c1c,stroke-width:2px
+    style DevAgent fill:#64b5f6,stroke:#1565c0,stroke-width:2px
+    style TestAgent fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
+    style AuditAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
 ```
+
+## 6. Complete Feature Development Workflow
+
+This diagram shows the full 10-step agent collaboration workflow for implementing a major feature.
+
+```mermaid
+flowchart TD
+    User["👤 USER REQUEST<br/>'Implement user authentication system'"]
+
+    subgraph Step1["1️⃣ PROJECT MANAGER AGENT"]
+        PM1["📖 Read config.md"]
+        PM2["📋 Create/track task in projects/"]
+        PM3["✅ Task created"]
+        PM1 --> PM2 --> PM3
+    end
+
+    subgraph Step2["2️⃣ ARCHITECT AGENT"]
+        A1["📖 Read config.md + memory/architecture-design"]
+        A2["🏛️ Design high-level architecture<br/>• Database schema<br/>• API endpoints<br/>• Security model"]
+        A3["📝 Create ADR (Architecture Decision Record)"]
+        A4["✅ Architecture designed"]
+        A1 --> A2 --> A3 --> A4
+    end
+
+    subgraph Step3["3️⃣ SOFTWARE DESIGN AGENT"]
+        SD1["📖 Read config.md + memory/architecture-design"]
+        SD2["🎨 Design code structure<br/>• Classes/modules<br/>• Design patterns<br/>• Interfaces"]
+        SD3["✅ Design complete"]
+        SD1 --> SD2 --> SD3
+    end
+
+    subgraph Step4["4️⃣ DEVELOPER AGENT"]
+        D1["📖 Read config.md + memory files"]
+        D2["✍️ Implement code<br/>Following design & architecture"]
+        D3["✅ Code written"]
+        D1 --> D2 --> D3
+    end
+
+    subgraph Step5["5️⃣ TESTER AGENT"]
+        T1["📖 Read config.md + memory/testing-qa"]
+        T2["🧪 Write comprehensive tests"]
+        T3["▶️ Run tests"]
+        T4{"Tests pass?"}
+        T5["✅ All tests pass"]
+        T1 --> T2 --> T3 --> T4
+        T4 -->|Yes| T5
+    end
+
+    FailBack1["❌ Return to Developer"]
+
+    subgraph Step6["6️⃣ AUDITOR AGENT"]
+        AU1["📖 Read config.md + memory/code-review"]
+        AU2["🔍 Review code<br/>• Security check<br/>• Quality check<br/>• Performance check"]
+        AU3{"Review pass?"}
+        AU4["✅ Audit passed"]
+        AU1 --> AU2 --> AU3
+        AU3 -->|Yes| AU4
+    end
+
+    FailBack2["❌ Return to Developer"]
+
+    subgraph Step7["7️⃣ GIT AGENT"]
+        G1["📖 Read config.md + memory/git-workflow"]
+        G2["📦 Commit and push<br/>Following git standards"]
+        G3["✅ Code committed"]
+        G1 --> G2 --> G3
+    end
+
+    subgraph Step8["8️⃣ DOCUMENTATION AGENT"]
+        DOC1["📖 Read config.md + memory/documentation"]
+        DOC2["📝 Update documentation<br/>• README<br/>• API docs<br/>• User guides"]
+        DOC3["✅ Docs updated"]
+        DOC1 --> DOC2 --> DOC3
+    end
+
+    subgraph Step9["9️⃣ DEPLOYMENT AGENT"]
+        DEP1["📖 Read config.md + memory/deployment"]
+        DEP2["🚀 Deploy to environments<br/>• Staging<br/>• Production (if approved)"]
+        DEP3["📊 Monitor deployment"]
+        DEP4["✅ Deployed successfully"]
+        DEP1 --> DEP2 --> DEP3 --> DEP4
+    end
+
+    subgraph Step10["🔟 PROJECT MANAGER AGENT"]
+        PM4["📋 Update task status"]
+        PM5["✅ Mark task complete"]
+        PM4 --> PM5
+    end
+
+    Complete["🎉 FEATURE COMPLETE!"]
+
+    User --> Step1
+    PM3 --> Step2
+    A4 --> Step3
+    SD3 --> Step4
+    D3 --> Step5
+    T4 -->|No| FailBack1 --> Step4
+    T5 --> Step6
+    AU3 -->|No| FailBack2 --> Step4
+    AU4 --> Step7
+    G3 --> Step8
+    DOC3 --> Step9
+    DEP4 --> Step10
+    PM5 --> Complete
+
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style Step1 fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
+    style Step2 fill:#90caf9,stroke:#1565c0,stroke-width:2px
+    style Step3 fill:#a5d6a7,stroke:#2e7d32,stroke-width:2px
+    style Step4 fill:#64b5f6,stroke:#1565c0,stroke-width:2px
+    style Step5 fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
+    style Step6 fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style Step7 fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Step8 fill:#4dd0e1,stroke:#006064,stroke-width:2px
+    style Step9 fill:#ffb74d,stroke:#e65100,stroke-width:2px
+    style Step10 fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
+    style Complete fill:#66bb6a,stroke:#1b5e20,stroke-width:4px
+    style FailBack1 fill:#ef5350,stroke:#b71c1c,stroke-width:2px
+    style FailBack2 fill:#ef5350,stroke:#b71c1c,stroke-width:2px
+```
+
+**Key Points:**
+- **Config-driven**: Every agent checks `config.md` first for personalization
+- **Quality gates**: Tests and audits act as checkpoints
+- **Failure loops**: Failed tests/audits return to Developer for fixes
+- **Complete lifecycle**: From planning to deployment to completion tracking
+- **Collaborative**: 10 different specialized agents working together
 
 ## Key Takeaways
 
