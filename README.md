@@ -64,12 +64,20 @@ If you used the template and want to pull in new improvements:
 # Add the original template as a remote (one time)
 git remote add template https://github.com/rhwendt/vaulty.git
 
-# Fetch and merge updates when you want them
+# Check what's new in the template
 git fetch template
+git show template/main:CHANGELOG.md
+
+# Merge updates when ready
 git merge template/main --allow-unrelated-histories
 
 # Resolve any conflicts (usually just in framework files)
 ```
+
+**Track updates:**
+- 📋 View **[CHANGELOG.md](CHANGELOG.md)** for version history
+- ⭐ Watch releases on GitHub for notifications
+- 📌 Check [GitHub Releases](../../releases) for new versions
 
 ## 🚀 Quick Start
 

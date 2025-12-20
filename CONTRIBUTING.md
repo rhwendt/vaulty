@@ -253,6 +253,75 @@ Before submitting your PR:
 - [ ] Commit messages are clear and descriptive
 - [ ] PR description explains what, why, and how
 
+## 🏷️ Versioning and Releases
+
+**For Maintainers**: Vaulty uses [Semantic Versioning](https://semver.org/) (MAJOR.MINOR.PATCH)
+
+### When to Bump Versions
+
+**MAJOR (1.x.x)** - Breaking changes:
+- Restructuring core directories (agents/, memory/, projects/)
+- Incompatible changes to config.md format
+- Removing or renaming core agents
+- Changes that require users to modify their setup
+
+**MINOR (x.1.x)** - New features:
+- New agents
+- New memory files
+- New language guides
+- New templates or examples
+- New agent trigger patterns
+
+**PATCH (x.x.1)** - Bug fixes and improvements:
+- Typo fixes
+- Documentation improvements
+- Bug fixes in agent logic
+- Clarifications to memory files
+- Broken link fixes
+
+### Release Process
+
+1. **Update CHANGELOG.md**
+   - Move items from `[Unreleased]` to new version section
+   - Add release date
+   - Follow Keep a Changelog format
+
+2. **Create Git Tag**
+   ```bash
+   git tag -a v1.2.0 -m "Release v1.2.0: Add security agent and API design memory"
+   git push origin v1.2.0
+   ```
+
+3. **Create GitHub Release**
+   - Go to Releases → Draft a new release
+   - Select the tag you just created
+   - Copy relevant section from CHANGELOG.md
+   - Highlight key features/changes
+   - Publish release
+
+4. **Notify Users** (optional)
+   - Post in Discussions
+   - Users watching releases will be notified automatically
+
+### CHANGELOG Format
+
+```markdown
+## [1.2.0] - 2025-01-15
+
+### Added
+- New Security Agent for security audits
+- New memory file for API design best practices
+
+### Changed
+- Improved Git Agent workflow for better commit messages
+
+### Fixed
+- Fixed broken wiki links in Developer Agent
+
+### Deprecated
+- Old project template (replaced with improved version)
+```
+
 ## 🤝 Code of Conduct
 
 - Be respectful and constructive
