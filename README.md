@@ -27,7 +27,33 @@ cd vaulty
 3. Click "Open folder as vault"
 4. Select the `vaulty` directory
 
-### 3. Start Using with Claude
+### 3. Configure Your Personal Settings ⚙️
+
+**IMPORTANT**: Create your personal config file before using Vaulty!
+
+```bash
+# Copy the template to create your config
+cp config.template.md config.md
+
+# Edit config.md with your preferences
+# (use your favorite editor)
+```
+
+Your `config.md` contains personal settings like:
+- Where you store your code repos locally (`repos_directory`)
+- Your preferred programming languages and frameworks
+- Your git preferences (default branch, commit style)
+- Your code style preferences (indentation, line length)
+- Your testing preferences (frameworks, coverage requirements)
+- Your deployment setup (cloud provider, CI/CD platform)
+- And much more!
+
+**Why this matters**: Every agent and memory file references your config to personalize their behavior. Claude will use your preferred tools, follow your code style, and work with your local directory structure.
+
+> [!TIP]
+> Don't worry about filling out everything at once. Start with the basics (name, repos_directory, default_branch) and add more as needed. The template has detailed examples for every setting.
+
+### 4. Start Using with Claude
 
 When interacting with Claude in this repository:
 
@@ -56,6 +82,9 @@ vaulty/
 ├── .claude.md                  # Main instructions for Claude (trigger words, workflows)
 ├── README.md                   # This file
 ├── .obsidian/                  # Obsidian configuration
+│
+├── config.template.md          # Template for your personal configuration
+├── config.md                   # YOUR personal config (git-ignored, create from template)
 │
 ├── memory/                     # Context memory files (best practices)
 │   ├── git-workflow.md         # Git operations and standards

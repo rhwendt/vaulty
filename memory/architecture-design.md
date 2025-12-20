@@ -2,6 +2,14 @@
 
 # Architecture & Design Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal architecture preferences:
+> - `languages`: Your preferred programming languages (in priority order)
+> - `frameworks`: Your preferred frameworks by language
+> - `database_relational`: Your preferred relational database
+> - `database_nosql`: Your preferred NoSQL database
+> - `preferred_license`: License preference for new projects
+
 ## Architecture Philosophy
 
 - **Start simple, evolve as needed** - Don't over-engineer upfront

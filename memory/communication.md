@@ -2,6 +2,14 @@
 
 # Communication Standards
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal communication preferences:
+> - `team_name` & `organization`: Your team and company
+> - `slack_workspace` / `discord_server`: Your communication channels
+> - `meeting_preference`: Async-first, sync-required, or hybrid
+> - `working_hours` & `timezone`: Your typical schedule
+> - `focus_time`: When you prefer no interruptions
+
 ## Communication Philosophy
 
 - **Be clear and concise** - Respect everyone's time

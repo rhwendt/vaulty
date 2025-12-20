@@ -2,6 +2,14 @@
 
 # Deployment Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal deployment preferences:
+> - `cloud_provider`: Your primary cloud provider (AWS, GCP, Azure, etc.)
+> - `cicd_platform`: Your CI/CD platform (GitHub Actions, GitLab CI, etc.)
+> - `deployment_strategy`: Preferred strategy (blue-green, canary, rolling)
+> - `environments`: Your environment names and URLs
+> - `deployment_days`: Preferred days for deployments
+
 ## Deployment Philosophy
 
 - **Automate everything** - Manual steps lead to errors

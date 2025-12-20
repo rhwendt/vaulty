@@ -2,6 +2,14 @@
 
 # Testing & QA Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal testing preferences:
+> - `test_framework_python`: Your preferred Python test framework
+> - `test_framework_javascript`: Your preferred JS test framework
+> - `minimum_coverage`: Your required code coverage percentage
+> - `critical_path_coverage`: Coverage requirement for critical code
+> - `test_file_pattern`: Your test file naming convention
+
 ## Testing Philosophy
 
 - **Test behavior, not implementation** - Tests should verify what code does, not how

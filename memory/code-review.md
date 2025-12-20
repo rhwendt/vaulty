@@ -2,6 +2,15 @@
 
 # Code Review Best Practices
 
+> [!NOTE] User Configuration
+> Check [[config]] for your personal code review preferences:
+> - `code_review_required`: Whether code review is mandatory
+> - `minimum_reviewers`: Number of reviewers required
+> - `max_line_length`: Your max line length standard
+> - `indent_style` & `indent_size`: Your indentation preferences
+> - `formatter_*`: Your preferred code formatters by language
+> - `linter_*`: Your preferred linters by language
+
 ## Code Review Philosophy
 
 - **Collaborative, not combative** - We're all on the same team
