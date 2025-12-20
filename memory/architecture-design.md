@@ -495,6 +495,25 @@ for user in users:
     posts = user.posts  # Already loaded
 ```
 
+## Language-Specific Patterns
+
+**For language-specific idioms, patterns, and best practices, consult:**
+
+- [[languages/python]] - Python design patterns, type hints, dataclasses
+- [[languages/javascript]] - JavaScript/Node.js patterns, async/promises
+- [[languages/typescript]] - TypeScript types, decorators, generics
+- [[languages/go]] - Go interfaces, embedding, channels, error handling
+- [[languages/rust]] - Rust traits, ownership patterns, Result types
+- [[languages/java]] - Java OOP, Spring patterns, streams, Optional
+- [[languages/csharp]] - C# async/await, LINQ, dependency injection
+- [[languages/cpp]] - C++ RAII, smart pointers, move semantics
+- [[languages/php]] - PHP OOP, Laravel patterns, type declarations
+- [[languages/ruby]] - Ruby metaprogramming, Rails patterns, modules
+- [[languages/swift]] - Swift protocols, value types, property wrappers
+- [[languages/kotlin]] - Kotlin sealed classes, coroutines, delegation
+
+These files contain language-specific implementations of design patterns and idiomatic approaches that differ from the general patterns described in this file.
+
 ## Related
 
 - [[documentation]] - For documenting architecture
