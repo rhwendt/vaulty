@@ -1,0 +1,125 @@
+name: Feature Request
+description: Suggest a new feature for the Vaulty framework
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please fill out this form to help us understand your idea.
+
+        **Note**: This is for framework improvements that benefit all Vaulty users.
+        Personal customizations should be made in your own copy of the template.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please verify the following before submitting
+      options:
+        - label: I have searched existing issues and PRs for similar features
+          required: true
+        - label: This feature would benefit the Vaulty framework, not just my personal use
+          required: true
+        - label: I have checked the documentation to ensure this doesn't already exist
+          required: false
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Type
+      description: What type of feature is this?
+      options:
+        - New Agent
+        - New Memory File
+        - New Programming Language Guide
+        - Improvement to Existing Agent
+        - Improvement to Existing Memory File
+        - New Template
+        - Documentation Enhancement
+        - Workflow Improvement
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / Use Case
+      description: What problem does this feature solve? Why is it needed?
+      placeholder: |
+        Example: Many developers work with databases, but there's no memory file for database design best practices.
+        This makes it harder for Claude to help with schema design, query optimization, and migration strategies.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How would this feature work? Be as specific as possible.
+      placeholder: |
+        Example: Create a new memory file `memory/database-design.md` that includes:
+        - Schema design principles (normalization, denormalization)
+        - Index strategies
+        - Query optimization patterns
+        - Migration best practices
+        - Common database anti-patterns
+
+        This would be referenced by the Architect Agent and Developer Agent when working with databases.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered any alternative approaches?
+      placeholder: |
+        Example: Could extend the existing architecture-design.md file, but database-specific guidance
+        deserves its own focused memory file.
+    validations:
+      required: false
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples
+      description: Are there similar features in other tools, or examples of how this would be used?
+      placeholder: |
+        Example: Similar to how we have language-specific files in memory/languages/,
+        this would provide domain-specific guidance for database work.
+    validations:
+      required: false
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: How would this benefit Vaulty users?
+      placeholder: |
+        Example:
+        - Developers working with databases get consistent best practices
+        - Reduces common database design mistakes
+        - Provides framework-agnostic database guidance
+        - Complements existing architecture and code review memory files
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Would you like to implement this feature?
+      options:
+        - label: I'm willing to submit a PR for this feature
+          required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, mockups, or information
+      placeholder: Add any other context, diagrams, or examples here
+    validations:
+      required: false

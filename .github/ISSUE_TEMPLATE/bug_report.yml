@@ -1,0 +1,114 @@
+name: Bug Report
+description: Report a bug in the Vaulty framework
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out this form to help us fix it.
+
+        **Note**: This is for bugs in the Vaulty **framework** (agents, memory files, templates).
+        If you're having issues with your personal configuration, please check the documentation first.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please verify the following before submitting
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: This is a bug in the framework, not my personal configuration
+          required: true
+        - label: I have tested with a fresh template copy if possible
+          required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is
+      placeholder: "Example: The Git Agent doesn't properly reference config.md settings when committing"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: "Example: The Git Agent should read my commit message style from config.md"
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: "Example: The Git Agent uses default commit style instead of my configured style"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the bug
+      placeholder: |
+        1. Set custom commit style in config.md
+        2. Ask Claude to "commit these changes"
+        3. Observe that Git Agent ignores config.md
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Relevant Files
+      description: Which framework files are involved? (agents, memory files, etc.)
+      placeholder: |
+        - agents/git-agent.md
+        - memory/git-workflow.md
+        - config.template.md
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Your setup details
+      placeholder: |
+        - Obsidian version: 1.4.16
+        - Claude interface: Claude.ai web / Claude Code / API
+        - Operating System: macOS 14.0
+      value: |
+        - Obsidian version:
+        - Claude interface:
+        - Operating System:
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, or information
+      placeholder: Add any other context about the problem here
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error Messages / Logs
+      description: Include any relevant error messages or logs
+      render: shell
+    validations:
+      required: false

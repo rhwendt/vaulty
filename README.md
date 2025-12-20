@@ -14,6 +14,63 @@ Vaulty is an **Obsidian vault** that serves as a comprehensive context memory sy
 
 📊 **[View System Interaction Diagrams](INTERACTION-DIAGRAM.md)** - Visual guide to how agents collaborate
 
+## 🔀 Using This Template Repository
+
+Vaulty is designed as a **GitHub Template Repository** for personal use. Choose your path:
+
+### 👤 For Personal Use (Recommended)
+
+**This is the most common use case** - create your own copy to customize for your workflow:
+
+1. **Click "Use this template"** button on GitHub (or [use this link](../../generate))
+2. Choose a name for your repository (e.g., `my-vaulty`, `claude-memory`)
+3. Select **Private** or **Public** (your choice)
+4. Click "Create repository from template"
+5. Clone your new repository and customize it
+
+**Benefits:**
+- ✅ Your own independent copy (no fork relationship)
+- ✅ Customize agents, memory files, and config for your needs
+- ✅ Add your personal projects without cluttering the template
+- ✅ Pull updates from the template when you want them
+- ✅ No expectation to contribute back (unless you want to!)
+
+### 🤝 For Contributing to Vaulty Framework
+
+**Want to improve Vaulty for everyone?** We welcome contributions!
+
+1. **Fork this repository** (not "Use this template")
+2. Make improvements to core framework files (agents, memory files, templates)
+3. Submit a Pull Request
+4. See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
+
+**What to contribute:**
+- New memory files for domains (security, performance, etc.)
+- New programming language guides
+- Improved agent workflows
+- Bug fixes and documentation
+- Example projects and use cases
+
+**What NOT to contribute:**
+- Your personal `config.md` settings
+- Your specific projects
+- Workflow tweaks specific to your needs
+
+### 🔄 Staying Updated
+
+If you used the template and want to pull in new improvements:
+
+```bash
+# Add the original template as a remote (one time)
+git remote add template https://github.com/rhwendt/vaulty.git
+
+# Fetch and merge updates when you want them
+git fetch template
+git merge template/main --allow-unrelated-histories
+
+# Resolve any conflicts (usually just in framework files)
+```
+
 ## 🚀 Quick Start
 
 ### 1. Clone This Repository
@@ -406,14 +463,17 @@ Organize with tags: #task #status/in-progress #priority/high
 
 ## 🤝 Contributing
 
-This is a template repository. Customize it for your needs!
+This is a **template repository** - feel free to use it for personal projects!
 
-Ideas for contributions:
+**Want to contribute to the Vaulty framework itself?** We welcome:
 - Additional memory files for other domains
+- New programming language guides
 - Custom agents for specialized tasks
-- Improved templates
-- Example projects
-- Workflow automations
+- Improved templates and examples
+- Documentation improvements
+- Bug fixes
+
+See **[CONTRIBUTING.md](CONTRIBUTING.md)** for detailed contribution guidelines.
 
 ## 📄 License
 
