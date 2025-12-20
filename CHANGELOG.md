@@ -18,6 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Visualization plugins (Excalidraw, Graph Analysis)
   - Recommended core settings configuration
   - Plugin installation and maintenance guide
+- **New agent**: Project Designer Agent for designing new projects from scratch
+  - Planning-first approach with requirements gathering
+  - Technology exploration and trade-off analysis
+  - Architecture design and implementation roadmaps
+  - Hands off to Architect, Project Manager, and Developer agents
+  - Includes comprehensive workflow documentation
+  - Updated README with new agent and workflow examples
+  - Updated INTERACTION-DIAGRAM.md with project design workflow diagram
+  - Updated .claude.md with trigger patterns and collaboration workflows
 
 ## [1.0.0] - 2025-01-XX
 

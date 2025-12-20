@@ -184,6 +184,7 @@ vaulty/
 │   ├── auditor-agent.md        # Code review and security specialist
 │   ├── documentation-agent.md  # Documentation specialist
 │   ├── project-manager-agent.md # Project management specialist
+│   ├── project-designer-agent.md # New project planning and design specialist
 │   ├── architect-agent.md      # Architecture and design specialist
 │   ├── deployment-agent.md     # Deployment and DevOps specialist
 │   ├── debugger-agent.md       # Debugging and troubleshooting specialist
@@ -226,11 +227,36 @@ Claude will automatically invoke specialized agents based on trigger words:
 
 | Agent | Purpose | Trigger Words |
 |-------|---------|---------------|
+| **Project Designer** | Design new projects from requirements | "help me design a project", "I want to build", "plan a project" |
 | **Project Manager** | Manage projects and tasks | "create project", "track task", "status" |
 | **Architect** | High-level design decisions | "architecture", "design system", "ADR" |
 | **Documentation** | Create/update docs | "document", "README", "write docs" |
 
 ## 🔄 Agent Collaboration Workflows
+
+### New Project Design (From Scratch)
+
+When you ask Claude to help design a new project:
+
+```
+1. Project Designer → Gathers requirements and asks clarifying questions
+   ↓
+2. Project Designer → Explores technology options and trade-offs
+   ↓
+3. Project Designer → Designs architecture and creates roadmap
+   ↓
+4. Architect → Creates ADRs for key technology decisions
+   ↓
+5. Project Manager → Sets up Vaulty project structure and tasks
+   ↓
+6. Developer → Ready to begin implementation
+
+Example: "I want to build a task management API with real-time updates"
+→ Project Designer asks about scale, users, tech preferences
+→ Explores options (WebSockets vs SSE, PostgreSQL vs MongoDB)
+→ Creates architecture diagram and implementation roadmap
+→ Hands off to other agents for execution
+```
 
 ### Complete Feature Development
 

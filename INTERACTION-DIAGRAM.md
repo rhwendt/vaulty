@@ -166,6 +166,7 @@ graph TB
         AuditAgent["🔍 Auditor Agent"]
         DeployAgent["🚀 Deployment Agent"]
         PMAgent["📊 Project Mgr Agent"]
+        ProjDesignAgent["🎯 Project Designer Agent"]
         DocsAgent["📝 Documentation Agent"]
         DebugAgent["🐛 Debugger Agent"]
         ArchAgent["🏛️ Architect Agent"]
@@ -185,6 +186,9 @@ graph TB
     Deploy -.->|Referenced by| DeployAgent
 
     ProjMgmt -.->|Referenced by| PMAgent
+
+    ArchDesign -.->|Referenced by| ProjDesignAgent
+    ProjMgmt -.->|Referenced by| ProjDesignAgent
 
     Docs -.->|Referenced by| DocsAgent
 
@@ -324,6 +328,54 @@ flowchart TD
     style TestAgent fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
     style AuditAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
     style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+```
+
+### Example D: "Help me design a new project"
+
+```mermaid
+flowchart TD
+    User["👤 User: 'I want to build a task management API with real-time updates'"]
+    Read["🤖 Claude reads .claude.md"]
+    Trigger["🎯 Trigger: 'build' + 'new project' → Project Designer Agent"]
+
+    subgraph ProjDesignAgent["🎯 PROJECT DESIGNER AGENT"]
+        PD1["1️⃣ Read config.md<br/>→ languages, frameworks, databases, cloud_provider"]
+        PD2["2️⃣ Gather requirements<br/>❓ How many users?<br/>❓ Real-time: WebSockets or SSE?<br/>❓ Data model complexity?<br/>❓ MVP vs future features?"]
+        PD3["3️⃣ Explore technology options<br/>📊 Language: Node.js vs Go vs Python<br/>📊 Database: PostgreSQL vs MongoDB<br/>📊 Real-time: Socket.io vs native WebSockets"]
+        PD4["4️⃣ Design architecture<br/>🏛️ API design (REST + WebSockets)<br/>🏛️ Database schema<br/>🏛️ Authentication strategy"]
+        PD5["5️⃣ Create implementation roadmap<br/>📋 Phase 1: Foundation<br/>📋 Phase 2: Core features<br/>📋 Phase 3: Real-time & deploy"]
+        PD1 --> PD2 --> PD3 --> PD4 --> PD5
+    end
+
+    Handoff1["🤝 Hands off to Architect Agent"]
+
+    subgraph ArchAgent["🏛️ ARCHITECT AGENT"]
+        ARCH1["1️⃣ Create ADRs<br/>📝 ADR-001: Technology choice<br/>📝 ADR-002: Database choice<br/>📝 ADR-003: Architecture pattern"]
+        ARCH1
+    end
+
+    Handoff2["🤝 Hands off to Project Manager Agent"]
+
+    subgraph PMAgent["📊 PROJECT MANAGER AGENT"]
+        PM1["1️⃣ Create project structure<br/>📁 projects/task-management-api/<br/>📄 overview.md<br/>📂 tasks/"]
+        PM2["2️⃣ Create initial tasks<br/>📝 task-001-setup-repository<br/>📝 task-002-database-schema<br/>📝 task-003-api-endpoints<br/>📝 task-004-websocket-server<br/>📝 task-005-testing"]
+        PM1 --> PM2
+    end
+
+    Handoff3["🤝 Ready for Developer Agent"]
+
+    Done["✅ Project designed and ready!<br/><br/>📋 Requirements documented<br/>🏛️ Architecture designed<br/>📝 ADRs created<br/>📂 Vaulty project set up<br/>📝 Tasks ready to implement"]
+
+    User --> Read --> Trigger --> ProjDesignAgent
+    ProjDesignAgent --> Handoff1 --> ArchAgent
+    ArchAgent --> Handoff2 --> PMAgent
+    PMAgent --> Handoff3 --> Done
+
+    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
+    style ProjDesignAgent fill:#9c27b0,stroke:#4a148c,stroke-width:2px
+    style ArchAgent fill:#90caf9,stroke:#1565c0,stroke-width:2px
+    style PMAgent fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
     style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
 ```
 
