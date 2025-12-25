@@ -71,11 +71,24 @@ git show template/main:CHANGELOG.md
 # Merge updates when ready
 git merge template/main --allow-unrelated-histories
 
-# Resolve any conflicts (usually just in framework files)
+# Resolve conflicts - common areas:
+# - .claude/rules/* (framework best practices)
+# - .claude/agents/* (subagent definitions)
+# - CLAUDE.md (main config file)
+# Keep YOUR changes in:
+# - config.md (your personal settings)
+# - projects/* (your projects)
 ```
 
+**What Gets Updated:**
+- ✅ `.claude/rules/` - Best practices and guidelines
+- ✅ `.claude/agents/` - Subagent definitions (official format)
+- ✅ `CLAUDE.md` - Main documentation
+- ✅ Templates and example projects
+- ⚠️ You keep: `config.md`, `projects/`, custom rules you added
+
 **Track updates:**
-- 📋 View **[CHANGELOG.md](CHANGELOG.md)** for version history
+- 📋 View **[CHANGELOG.md](CHANGELOG.md)** for version history and breaking changes
 - ⭐ Watch releases on GitHub for notifications
 - 📌 Check [GitHub Releases](../../releases) for new versions
 
