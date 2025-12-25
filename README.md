@@ -74,7 +74,7 @@ git merge template/main --allow-unrelated-histories
 # Resolve conflicts - common areas:
 # - .claude/rules/* (framework best practices)
 # - .claude/agents/* (subagent definitions)
-# - CLAUDE.md (main config file)
+# - .claude/CLAUDE.md (main project instructions)
 # Keep YOUR changes in:
 # - config.md (your personal settings)
 # - projects/* (your projects)
@@ -82,8 +82,8 @@ git merge template/main --allow-unrelated-histories
 
 **What Gets Updated:**
 - ✅ `.claude/rules/` - Best practices and guidelines
-- ✅ `.claude/agents/` - Subagent definitions (official format)
-- ✅ `CLAUDE.md` - Main documentation
+- ✅ `.claude/agents/` - Subagent definitions
+- ✅ `.claude/CLAUDE.md` - Main project instructions
 - ✅ Templates and example projects
 - ⚠️ You keep: `config.md`, `projects/`, custom rules you added
 
@@ -134,27 +134,9 @@ Your `config.md` contains personal settings like:
 > [!TIP]
 > Don't worry about filling out everything at once. Start with the basics (name, repos_directory, default_branch) and add more as needed. The template has detailed examples for every setting.
 
-### 4. Start Using with Claude
+### 4. Start Using with Claude Code
 
-When interacting with Claude in this repository:
-
-**For Git Operations:**
-```
-"Commit these changes to git"
-```
-→ Claude will use the Git Helper Agent and reference `.claude/rules/git-workflow.md`
-
-**For Development:**
-```
-"Write a Python script to process JSON files"
-```
-→ Claude will use Developer Agent → Tester Agent → Auditor Agent → Git Agent workflow
-
-**For Project Management:**
-```
-"Create a new project for building a REST API"
-```
-→ Claude will use Project Manager Agent and create structured project files
+Run Claude Code in this directory. The rules in `.claude/rules/` and agents in `.claude/agents/` are automatically loaded and provide context for your interactions.
 
 ## ⚙️ Environment Configuration
 
@@ -249,7 +231,6 @@ See [official Claude Code documentation](https://code.claude.com/docs/en/setting
 
 ```
 vaulty/
-├── CLAUDE.md                   # Main instructions for Claude (trigger words, workflows)
 ├── README.md                   # This file
 ├── .obsidian/                  # Obsidian configuration
 │
@@ -257,6 +238,7 @@ vaulty/
 ├── config.md                   # YOUR personal config (git-ignored, create from template)
 │
 ├── .claude/                    # Claude Code configuration
+│   ├── CLAUDE.md               # Main project instructions (concise)
 │   ├── rules/                  # Best practices (auto-loaded)
 │   │   ├── git-workflow.md     # Git operations and standards
 │   │   ├── project-management.md # Project and task management
@@ -307,89 +289,21 @@ vaulty/
 
 ## 🤖 Specialized Agents
 
-Claude will automatically invoke specialized agents based on trigger words:
+Vaulty includes specialized subagents in `.claude/agents/` that Claude automatically delegates to based on task context:
 
-### Development Workflow Agents
+- **Developer** - Code implementation and bug fixes
+- **Tester** - Writing and running tests
+- **Auditor** - Code review and security checks
+- **Software Designer** - Design patterns and refactoring
+- **Git Helper** - Version control operations
+- **Deployer** - Deployment and CI/CD
+- **Debugger** - Investigating issues
+- **Project Designer** - New project planning
+- **Project Manager** - Task and project tracking
+- **Architect** - High-level design decisions
+- **Documenter** - Documentation creation
 
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Developer** | Write and modify code | "write", "implement", "create script", "fix bug" |
-| **Tester** | Write and run tests | "test", "write tests", "check coverage" |
-| **Auditor** | Review code for quality/security | "review", "audit", "check for issues" |
-| **Software Design** | Apply design patterns | "design pattern", "refactor", "improve design" |
-
-### Operations Agents
-
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Git** | Version control operations | "commit", "push", "pull request", "merge" |
-| **Deployment** | Deploy and release | "deploy", "release", "rollback", "CI/CD" |
-| **Debugger** | Investigate issues | "debug", "error", "bug", "not working" |
-
-### Planning Agents
-
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Project Designer** | Design new projects from requirements | "help me design a project", "I want to build", "plan a project" |
-| **Project Manager** | Manage projects and tasks | "create project", "track task", "status" |
-| **Architect** | High-level design decisions | "architecture", "design system", "ADR" |
-| **Documentation** | Create/update docs | "document", "README", "write docs" |
-
-## 🔄 Agent Collaboration Workflows
-
-### New Project Design (From Scratch)
-
-When you ask Claude to help design a new project:
-
-```
-1. Project Designer → Gathers requirements and asks clarifying questions
-   ↓
-2. Project Designer → Explores technology options and trade-offs
-   ↓
-3. Project Designer → Designs architecture and creates roadmap
-   ↓
-4. Architect → Creates ADRs for key technology decisions
-   ↓
-5. Project Manager → Sets up Vaulty project structure and tasks
-   ↓
-6. Developer → Ready to begin implementation
-
-Example: "I want to build a task management API with real-time updates"
-→ Project Designer asks about scale, users, tech preferences
-→ Explores options (WebSockets vs SSE, PostgreSQL vs MongoDB)
-→ Creates architecture diagram and implementation roadmap
-→ Hands off to other agents for execution
-```
-
-### Complete Feature Development
-
-When you ask Claude to implement a feature, agents collaborate:
-
-```
-1. Project Manager → Creates/tracks task
-2. Architect → Designs high-level architecture (if major)
-3. Software Design → Designs code structure
-4. Developer → Implements code
-5. Tester → Writes and runs tests
-   ↓ (if tests fail, back to Developer)
-6. Auditor → Reviews for quality and security
-   ↓ (if review fails, back to Developer)
-7. Git → Commits and pushes code
-8. Documentation → Updates docs
-9. Deployment → Deploys to environments
-10. Project Manager → Marks task complete
-```
-
-### Quick Bug Fix
-
-```
-1. Debugger → Investigates and finds root cause
-2. Developer → Implements fix
-3. Tester → Adds regression test
-4. Auditor → Reviews fix
-5. Git → Commits fix
-6. Deployment → Deploys hotfix
-```
+Agents and their collaboration workflows are defined in `.claude/agents/` and `.claude/rules/workflows.md`.
 
 ## 📝 Rules Files (Best Practices)
 
@@ -433,51 +347,6 @@ Each language has its own comprehensive guide in `.claude/rules/languages/`:
 - ✅ Common anti-patterns to avoid
 - ✅ Performance tips
 - ✅ Official resources and style guides
-
-## 🎯 Usage Examples
-
-### Example 1: Start a New Project
-
-```
-You: "Create a new project for building a task management API"
-
-Claude will:
-1. Use Project Manager Agent
-2. Create projects/task-management-api/
-3. Create overview.md from template
-4. Create initial task breakdown
-5. Reference memory/project-management.md for structure
-```
-
-### Example 2: Implement a Feature
-
-```
-You: "Write a Python function to validate email addresses"
-
-Claude will:
-1. Use Developer Agent (references .claude/rules/architecture-design.md)
-2. Write the function with proper error handling
-3. Use Tester Agent (references .claude/rules/testing-qa.md)
-4. Write comprehensive tests
-5. Use Auditor Agent (references .claude/rules/code-review.md)
-6. Review for security and quality
-7. Use Git Helper Agent (references .claude/rules/git-workflow.md)
-8. Commit with proper message
-```
-
-### Example 3: Deploy Changes
-
-```
-You: "Deploy this to production"
-
-Claude will:
-1. Use Deployment Agent
-2. Reference .claude/rules/deployment.md
-3. Run pre-deployment checklist
-4. Execute deployment steps
-5. Monitor deployment
-6. Report status
-```
 
 ## 🔧 Customization
 
@@ -552,33 +421,6 @@ cp projects/_templates/project-overview-template.md projects/my-new-project/over
 - ✅ Onboarding documentation
 - ✅ Collaborative decision records (ADRs)
 - ✅ Standardized workflows
-
-### For Claude
-- ✅ Persistent context across sessions
-- ✅ Domain expertise on demand
-- ✅ Systematic problem-solving workflows
-- ✅ Quality gates (testing, review) before commits
-- ✅ Collaborative agent patterns
-
-## 📋 Best Practices
-
-### ✅ Do
-
-- Reference memory files before operations
-- Use appropriate agents for tasks
-- Follow agent collaboration workflows
-- Update project/task status regularly
-- Document decisions in ADRs
-- Test before committing
-- Review before merging
-
-### ❌ Don't
-
-- Skip agent workflows (especially Developer → Tester → Auditor)
-- Commit without testing
-- Deploy without consulting deployment checklist
-- Make architectural decisions without documentation
-- Skip referencing memory files
 
 ## 🔗 Obsidian Features
 
