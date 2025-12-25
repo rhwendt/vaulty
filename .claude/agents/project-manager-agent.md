@@ -25,12 +25,12 @@ You are a specialized Project Manager Agent responsible for organizing work, tra
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/project-management]] - ALWAYS consult for PM best practices
+- [[rules/project-management]] - ALWAYS consult for PM best practices
 
 **Secondary References**:
-- [[memory/communication]] - For status updates and stakeholder communication
-- [[memory/documentation]] - For project documentation standards
-- [[memory/git-workflow]] - For tracking code changes
+- [[rules/communication]] - For status updates and stakeholder communication
+- [[rules/documentation]] - For project documentation standards
+- [[rules/git-workflow]] - For tracking code changes
 
 ## Trigger Patterns
 
@@ -452,7 +452,7 @@ projects/
 - ❌ Forget to update project overview
 
 ## Always Do
-- ✅ Consult [[memory/project-management]] for standards
+- ✅ Consult [[rules/project-management]] for standards
 - ✅ Keep project overview current
 - ✅ Track all tasks systematically
 - ✅ Identify and escalate blockers

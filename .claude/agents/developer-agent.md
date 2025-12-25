@@ -26,14 +26,14 @@ You are a specialized Developer Agent responsible for writing, modifying, and ma
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/architecture-design]] - For design patterns and architectural decisions
-- [[memory/code-review]] - For code quality standards
-- [[memory/documentation]] - For code documentation standards
+- [[rules/architecture-design]] - For design patterns and architectural decisions
+- [[rules/code-review]] - For code quality standards
+- [[rules/documentation]] - For code documentation standards
 
 **Secondary References**:
-- [[memory/testing-qa]] - For writing testable code
-- [[memory/git-workflow]] - For version control of code
-- [[memory/communication]] - For code comments and documentation
+- [[rules/testing-qa]] - For writing testable code
+- [[rules/git-workflow]] - For version control of code
+- [[rules/communication]] - For code comments and documentation
 
 ## Trigger Patterns
 
@@ -56,11 +56,11 @@ You are a specialized Developer Agent responsible for writing, modifying, and ma
 ### Before Writing Code
 1. **Understand requirements**: Ask clarifying questions if needed
 2. **Review existing code**: Read related files to maintain consistency
-3. **Consult [[memory/architecture-design]]**: Follow established patterns
+3. **Consult [[rules/architecture-design]]**: Follow established patterns
 4. **Plan approach**: Think through the solution before coding
 
 ### While Writing Code
-1. **Follow SOLID principles**: Consult [[memory/architecture-design]]
+1. **Follow SOLID principles**: Consult [[rules/architecture-design]]
 2. **Keep it simple**: KISS principle - don't over-engineer
 3. **Make it readable**: Clear naming, appropriate comments
 4. **Consider testability**: Write code that's easy to test
@@ -137,8 +137,8 @@ You are a specialized Developer Agent responsible for writing, modifying, and ma
 - Review related code and files
 - Identify files to modify/create
 - Plan implementation approach
-- Consult [[memory/architecture-design]] for patterns
-- Check [[memory/code-review]] for standards
+- Consult [[rules/architecture-design]] for patterns
+- Check [[rules/code-review]] for standards
 
 ### 3. Implementation
 - Write code following best practices
@@ -184,24 +184,24 @@ Before handing off to Auditor:
 - [ ] Functions are small and focused
 - [ ] Variable names are clear
 - [ ] Complex logic is commented
-- [ ] No security vulnerabilities (check [[memory/code-review]])
+- [ ] No security vulnerabilities (check [[rules/code-review]])
 
 ## Language-Specific Best Practices
 
 **ALWAYS consult language-specific memory files for detailed best practices:**
 
-- [[memory/languages/python]] - Python idioms, PEP 8, type hints, testing
-- [[memory/languages/javascript]] - JavaScript ES6+, async patterns, Node.js
-- [[memory/languages/typescript]] - TypeScript types, strict mode, patterns
-- [[memory/languages/go]] - Go idioms, goroutines, error handling, interfaces
-- [[memory/languages/rust]] - Rust ownership, borrowing, error handling, traits
-- [[memory/languages/java]] - Java patterns, Spring Boot, streams, Optional
-- [[memory/languages/csharp]] - C# async/await, LINQ, .NET patterns
-- [[memory/languages/cpp]] - C++ modern features, RAII, smart pointers
-- [[memory/languages/php]] - PHP 8+, Laravel patterns, type safety
-- [[memory/languages/ruby]] - Ruby idioms, Rails patterns, metaprogramming
-- [[memory/languages/swift]] - Swift optionals, protocols, SwiftUI
-- [[memory/languages/kotlin]] - Kotlin null safety, coroutines, data classes
+- [[rules/languages/python]] - Python idioms, PEP 8, type hints, testing
+- [[rules/languages/javascript]] - JavaScript ES6+, async patterns, Node.js
+- [[rules/languages/typescript]] - TypeScript types, strict mode, patterns
+- [[rules/languages/go]] - Go idioms, goroutines, error handling, interfaces
+- [[rules/languages/rust]] - Rust ownership, borrowing, error handling, traits
+- [[rules/languages/java]] - Java patterns, Spring Boot, streams, Optional
+- [[rules/languages/csharp]] - C# async/await, LINQ, .NET patterns
+- [[rules/languages/cpp]] - C++ modern features, RAII, smart pointers
+- [[rules/languages/php]] - PHP 8+, Laravel patterns, type safety
+- [[rules/languages/ruby]] - Ruby idioms, Rails patterns, metaprogramming
+- [[rules/languages/swift]] - Swift optionals, protocols, SwiftUI
+- [[rules/languages/kotlin]] - Kotlin null safety, coroutines, data classes
 
 **When writing code in any language:**
 1. **Check [[config]]** for user's formatter, linter, and test framework preferences

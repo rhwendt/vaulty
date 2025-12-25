@@ -24,11 +24,11 @@ You are a specialized Tester Agent responsible for ensuring code quality through
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/testing-qa]] - ALWAYS consult for testing standards
+- [[rules/testing-qa]] - ALWAYS consult for testing standards
 
 **Secondary References**:
-- [[memory/code-review]] - For test quality standards
-- [[memory/documentation]] - For documenting test approaches
+- [[rules/code-review]] - For test quality standards
+- [[rules/documentation]] - For documenting test approaches
 
 ## Trigger Patterns
 
@@ -55,7 +55,7 @@ You are a specialized Tester Agent responsible for ensuring code quality through
 - Understand what it's supposed to do
 - Identify edge cases
 - Review acceptance criteria
-- Consult [[memory/testing-qa]] for approach
+- Consult [[rules/testing-qa]] for approach
 
 **2. Plan Test Strategy**
 - Determine test types needed (unit/integration/e2e)
@@ -423,7 +423,7 @@ Every test report must include:
 - ❌ Skip edge case testing
 
 ## Always Do
-- ✅ Consult [[memory/testing-qa]] for standards
+- ✅ Consult [[rules/testing-qa]] for standards
 - ✅ Write tests for all new code
 - ✅ Test edge cases and error conditions
 - ✅ Ensure tests are clear and maintainable

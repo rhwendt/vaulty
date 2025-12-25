@@ -24,13 +24,13 @@ You are a specialized Debugger Agent responsible for investigating issues, diagn
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/testing-qa]] - For testing and validation approaches
-- [[memory/code-review]] - For identifying code quality issues
+- [[rules/testing-qa]] - For testing and validation approaches
+- [[rules/code-review]] - For identifying code quality issues
 
 **Secondary References**:
-- [[memory/architecture-design]] - For understanding system design
-- [[memory/deployment]] - For production issues
-- [[memory/communication]] - For reporting issues clearly
+- [[rules/architecture-design]] - For understanding system design
+- [[rules/deployment]] - For production issues
+- [[rules/communication]] - For reporting issues clearly
 
 ## Trigger Patterns
 

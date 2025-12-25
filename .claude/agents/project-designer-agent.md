@@ -25,13 +25,13 @@ You are a specialized Project Designer Agent responsible for helping design new 
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/architecture-design]] - For design patterns and architecture
-- [[memory/project-management]] - For project structure and planning
+- [[rules/architecture-design]] - For design patterns and architecture
+- [[rules/project-management]] - For project structure and planning
 
 **Secondary References**:
-- [[memory/documentation]] - For documenting requirements
+- [[rules/documentation]] - For documenting requirements
 - [[config]] - For user preferences and constraints
-- Language-specific files in [[memory/languages/]] - For tech stack decisions
+- Language-specific files in [[rules/languages/]] - For tech stack decisions
 
 ## Trigger Patterns
 
@@ -344,7 +344,7 @@ graph TD
    - Architecture documentation
 
 3. Prepare for **Developer Agent**:
-   - Link to relevant language guide in [[memory/languages/]]
+   - Link to relevant language guide in [[rules/languages/]]
    - Reference framework best practices
    - Provide architecture guidelines
 
@@ -381,9 +381,9 @@ Created [N] tasks in `projects/[project-name]/tasks/`:
 - 🏗️ **Architect Agent**: Available for questions
 
 **Reference Materials**:
-- Language guide: [[memory/languages/[language]]]
+- Language guide: [[rules/languages/[language]]]
 - User config: [[config]]
-- Architecture patterns: [[memory/architecture-design]]
+- Architecture patterns: [[rules/architecture-design]]
 ```
 
 ## Collaboration with Other Agents
@@ -601,5 +601,5 @@ Created [N] tasks in `projects/[project-name]/tasks/`:
 - ✅ Hand off to appropriate agents
 - ✅ Consider operational complexity
 - ✅ Plan for testing, deployment, and monitoring
-- ✅ Consult [[memory/architecture-design]] for patterns
-- ✅ Reference language guides in [[memory/languages/]]
+- ✅ Consult [[rules/architecture-design]] for patterns
+- ✅ Reference language guides in [[rules/languages/]]

@@ -24,13 +24,13 @@ You are a specialized Auditor Agent responsible for reviewing code for quality, 
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/code-review]] - ALWAYS consult for review standards
-- [[memory/testing-qa]] - For test coverage requirements
-- [[memory/architecture-design]] - For design pattern validation
+- [[rules/code-review]] - ALWAYS consult for review standards
+- [[rules/testing-qa]] - For test coverage requirements
+- [[rules/architecture-design]] - For design pattern validation
 
 **Secondary References**:
-- [[memory/documentation]] - For documentation standards
-- [[memory/communication]] - For providing clear feedback
+- [[rules/documentation]] - For documentation standards
+- [[rules/communication]] - For providing clear feedback
 
 ## Trigger Patterns
 
@@ -55,7 +55,7 @@ You are a specialized Auditor Agent responsible for reviewing code for quality, 
 - Review scope of changes
 - Understand what the code is supposed to do
 - Check that tests exist and pass
-- Read [[memory/code-review]] for current standards
+- Read [[rules/code-review]] for current standards
 
 **2. Security Review**
 - Check for OWASP Top 10 vulnerabilities
@@ -97,7 +97,7 @@ You are a specialized Auditor Agent responsible for reviewing code for quality, 
 
 ### Audit Checklist
 
-Consult [[memory/code-review]] and verify:
+Consult [[rules/code-review]] and verify:
 
 **Security** ⚠️
 - [ ] No SQL injection vulnerabilities
@@ -345,7 +345,7 @@ Every audit must include:
 - ❌ Rush the review process
 
 ## Always Do
-- ✅ Consult [[memory/code-review]] for standards
+- ✅ Consult [[rules/code-review]] for standards
 - ✅ Check for security vulnerabilities
 - ✅ Verify test coverage
 - ✅ Provide specific, actionable feedback

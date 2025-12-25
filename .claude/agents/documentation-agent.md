@@ -24,12 +24,12 @@ You are a specialized Documentation Agent responsible for creating, maintaining,
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/documentation]] - ALWAYS consult for documentation standards
+- [[rules/documentation]] - ALWAYS consult for documentation standards
 
 **Secondary References**:
-- [[memory/architecture-design]] - For technical documentation
-- [[memory/communication]] - For clear writing
-- [[memory/project-management]] - For project docs
+- [[rules/architecture-design]] - For technical documentation
+- [[rules/communication]] - For clear writing
+- [[rules/project-management]] - For project docs
 
 ## Trigger Patterns
 
@@ -53,7 +53,7 @@ You are a specialized Documentation Agent responsible for creating, maintaining,
 ### Before Writing Documentation
 1. **Understand the audience**: Developers, users, or operators?
 2. **Review existing docs**: Maintain consistency
-3. **Consult [[memory/documentation]]**: Follow standards
+3. **Consult [[rules/documentation]]**: Follow standards
 4. **Gather information**: Talk to Developer/Architect agents if needed
 
 ### Documentation Types
@@ -492,7 +492,7 @@ Brief description of what was documented and why.
 ## Documentation Checklist
 
 Before marking documentation complete:
-- [ ] Consulted [[memory/documentation]] for standards
+- [ ] Consulted [[rules/documentation]] for standards
 - [ ] Audience clearly identified
 - [ ] Information is accurate and tested
 - [ ] Code examples are complete and runnable
@@ -513,7 +513,7 @@ Before marking documentation complete:
 - ❌ Write for yourself instead of the audience
 
 ## Always Do
-- ✅ Consult [[memory/documentation]] for standards
+- ✅ Consult [[rules/documentation]] for standards
 - ✅ Test all code examples
 - ✅ Use clear, simple language
 - ✅ Include examples and use cases

@@ -26,12 +26,12 @@ You are a specialized Architect Agent responsible for high-level system design, 
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/architecture-design]] - ALWAYS consult for design patterns and principles
+- [[rules/architecture-design]] - ALWAYS consult for design patterns and principles
 
 **Secondary References**:
-- [[memory/code-review]] - For architectural code review
-- [[memory/documentation]] - For documenting decisions
-- [[memory/testing-qa]] - For testing architecture
+- [[rules/code-review]] - For architectural code review
+- [[rules/documentation]] - For documenting decisions
+- [[rules/testing-qa]] - For testing architecture
 
 ## Trigger Patterns
 
@@ -62,7 +62,7 @@ You are a specialized Architect Agent responsible for high-level system design, 
 
 **2. Analyze Options**
 - Research possible approaches
-- Consult [[memory/architecture-design]]
+- Consult [[rules/architecture-design]]
 - Consider trade-offs
 - Evaluate against requirements
 
@@ -209,7 +209,7 @@ Key considerations for implementation:
 
 ## References
 
-- [[memory/architecture-design]]
+- [[rules/architecture-design]]
 - [External resource](url)
 - [Related ADR](path)
 ```
@@ -462,7 +462,7 @@ Don't create ADR for:
 - ❌ Copy architectures without understanding context
 
 ## Always Do
-- ✅ Consult [[memory/architecture-design]] for patterns
+- ✅ Consult [[rules/architecture-design]] for patterns
 - ✅ Document major decisions in ADRs
 - ✅ Consider trade-offs explicitly
 - ✅ Start simple, evolve as needed

@@ -25,12 +25,12 @@ You are a specialized Deployment Agent responsible for deploying applications, m
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/deployment]] - ALWAYS consult for deployment best practices
+- [[rules/deployment]] - ALWAYS consult for deployment best practices
 
 **Secondary References**:
-- [[memory/testing-qa]] - For pre-deployment testing
-- [[memory/git-workflow]] - For release tagging
-- [[memory/documentation]] - For deployment documentation
+- [[rules/testing-qa]] - For pre-deployment testing
+- [[rules/git-workflow]] - For release tagging
+- [[rules/documentation]] - For deployment documentation
 
 ## Trigger Patterns
 
@@ -74,7 +74,7 @@ You are a specialized Deployment Agent responsible for deploying applications, m
 
 ### Pre-Deployment Checklist
 
-Consult [[memory/deployment]] and verify:
+Consult [[rules/deployment]] and verify:
 
 **Code Quality** ✅
 - [ ] All tests pass
@@ -231,7 +231,7 @@ API_KEY=${SECRET:prod-api-key}
 
 **1. Pre-Deployment**
 ```markdown
-- [ ] Consult [[memory/deployment]] for checklist
+- [ ] Consult [[rules/deployment]] for checklist
 - [ ] Verify all pre-deployment checks pass
 - [ ] Create backup (database, configs)
 - [ ] Notify team of deployment
@@ -478,7 +478,7 @@ alerts: enabled
 - ❌ Deploy without rollback plan
 
 ## Always Do
-- ✅ Consult [[memory/deployment]] for checklist
+- ✅ Consult [[rules/deployment]] for checklist
 - ✅ Run full test suite before deploy
 - ✅ Create database backup
 - ✅ Test migrations in staging first

@@ -24,11 +24,11 @@ You are a specialized Software Design Agent responsible for applying design patt
 
 ## Key Memory Files
 **Primary References**:
-- [[memory/architecture-design]] - For design patterns and principles
+- [[rules/architecture-design]] - For design patterns and principles
 
 **Secondary References**:
-- [[memory/code-review]] - For code quality standards
-- [[memory/documentation]] - For documenting design decisions
+- [[rules/code-review]] - For code quality standards
+- [[rules/documentation]] - For documenting design decisions
 
 ## Trigger Patterns
 
@@ -642,7 +642,7 @@ Component
 - ❌ Make premature abstractions
 
 ## Always Do
-- ✅ Consult [[memory/architecture-design]] for patterns
+- ✅ Consult [[rules/architecture-design]] for patterns
 - ✅ Apply SOLID principles
 - ✅ Keep it simple (KISS)
 - ✅ Design for testability
