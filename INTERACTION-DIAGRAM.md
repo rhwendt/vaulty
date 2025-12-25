@@ -32,10 +32,10 @@ flowchart TD
     Step3 --> Workflow
     Workflow --> Agents
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style Claude fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style Workflow fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Agents fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
+    style User fill:#0288d1,stroke:#01579b,stroke-width:2px,color:#fff
+    style Claude fill:#f57c00,stroke:#e65100,stroke-width:2px,color:#fff
+    style Workflow fill:#388e3c,stroke:#1b5e20,stroke-width:2px,color:#fff
+    style Agents fill:#7b1fa2,stroke:#4a148c,stroke-width:2px,color:#fff
 ```
 
 ## 2. Detailed Agent Collaboration Workflow
@@ -85,11 +85,11 @@ flowchart TD
     AuditDone --> GitAgent
     GitDone --> Result
 
-    style DevAgent fill:#64b5f6,stroke:#1565c0,stroke-width:2px
-    style TestAgent fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
-    style AuditAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Result fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+    style DevAgent fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style TestAgent fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style AuditAgent fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style GitAgent fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Result fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:3px
 ```
 
 ## 3. Configuration Flow Through System
@@ -137,11 +137,11 @@ flowchart TB
     ClaudeMD -.-> ClaudeDetails
     Claude -.-> ClaudeAI
 
-    style Config fill:#ffca28,stroke:#f57f17,stroke-width:4px,color:#000
-    style Memory fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style Agents fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
-    style ClaudeMD fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style Claude fill:#81c784,stroke:#2e7d32,stroke-width:2px
+    style Config fill:#f57f17,stroke:#e65100,stroke-width:4px,color:#fff
+    style Memory fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style Agents fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style ClaudeMD fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style Claude fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
 ```
 
 ## 4. Memory Files & Agent Relationships
@@ -200,16 +200,16 @@ graph TB
     ArchDesign -.->|Referenced by| DesignAgent
     CodeRev -.->|Referenced by| DesignAgent
 
-    style MemoryFiles fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Agents fill:#64b5f6,stroke:#1565c0,stroke-width:2px
-    style GitWF fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style ProjMgmt fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style TestQA fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style Deploy fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style Docs fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style CodeRev fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style Comm fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
-    style ArchDesign fill:#fff176,stroke:#f57f17,stroke-width:2px,color:#000
+    style MemoryFiles fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Agents fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style GitWF fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style ProjMgmt fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style TestQA fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style Deploy fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style Docs fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style CodeRev fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style Comm fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
+    style ArchDesign fill:#f9a825,stroke:#f57f17,stroke-width:2px,color:#000
 ```
 
 ## 5. Quick Example Interactions
@@ -236,9 +236,9 @@ flowchart TD
 
     User --> Read --> Trigger --> GitAgent --> Done
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+    style User fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style GitAgent fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Done fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:3px
 ```
 
 ### Example B: "Deploy to production"
@@ -263,9 +263,9 @@ flowchart TD
 
     User --> Read --> Trigger --> DeployAgent --> Done
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style DeployAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+    style User fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style DeployAgent fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style Done fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:3px
 ```
 
 ### Example C: "Fix this bug"
@@ -322,13 +322,13 @@ flowchart TD
     AuditAgent --> Handoff4 --> GitAgent
     GitAgent --> Done
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style DebugAgent fill:#ef5350,stroke:#b71c1c,stroke-width:2px
-    style DevAgent fill:#64b5f6,stroke:#1565c0,stroke-width:2px
-    style TestAgent fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
-    style AuditAgent fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style GitAgent fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+    style User fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style DebugAgent fill:#c62828,stroke:#b71c1c,color:#fff,stroke-width:2px
+    style DevAgent fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style TestAgent fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style AuditAgent fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style GitAgent fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Done fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:3px
 ```
 
 ### Example D: "Help me design a new project"
@@ -372,11 +372,11 @@ flowchart TD
     ArchAgent --> Handoff2 --> PMAgent
     PMAgent --> Handoff3 --> Done
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style ProjDesignAgent fill:#9c27b0,stroke:#4a148c,stroke-width:2px
-    style ArchAgent fill:#90caf9,stroke:#1565c0,stroke-width:2px
-    style PMAgent fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
-    style Done fill:#66bb6a,stroke:#1b5e20,stroke-width:3px
+    style User fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style ProjDesignAgent fill:#7b1fa2,stroke:#4a148c,color:#fff,stroke-width:2px
+    style ArchAgent fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style PMAgent fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style Done fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:3px
 ```
 
 ## 6. Complete Feature Development Workflow
@@ -483,20 +483,20 @@ flowchart TD
     DEP4 --> Step10
     PM5 --> Complete
 
-    style User fill:#4fc3f7,stroke:#01579b,stroke-width:2px
-    style Step1 fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
-    style Step2 fill:#90caf9,stroke:#1565c0,stroke-width:2px
-    style Step3 fill:#a5d6a7,stroke:#2e7d32,stroke-width:2px
-    style Step4 fill:#64b5f6,stroke:#1565c0,stroke-width:2px
-    style Step5 fill:#ba68c8,stroke:#6a1b9a,stroke-width:2px
-    style Step6 fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style Step7 fill:#81c784,stroke:#2e7d32,stroke-width:2px
-    style Step8 fill:#4dd0e1,stroke:#006064,stroke-width:2px
-    style Step9 fill:#ffb74d,stroke:#e65100,stroke-width:2px
-    style Step10 fill:#ce93d8,stroke:#6a1b9a,stroke-width:2px
-    style Complete fill:#66bb6a,stroke:#1b5e20,stroke-width:4px
-    style FailBack1 fill:#ef5350,stroke:#b71c1c,stroke-width:2px
-    style FailBack2 fill:#ef5350,stroke:#b71c1c,stroke-width:2px
+    style User fill:#0288d1,stroke:#01579b,color:#fff,stroke-width:2px
+    style Step1 fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style Step2 fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style Step3 fill:#43a047,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Step4 fill:#1976d2,stroke:#0d47a1,color:#fff,stroke-width:2px
+    style Step5 fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style Step6 fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style Step7 fill:#388e3c,stroke:#1b5e20,color:#fff,stroke-width:2px
+    style Step8 fill:#00838f,stroke:#004d40,color:#fff,stroke-width:2px
+    style Step9 fill:#f57c00,stroke:#e65100,color:#fff,stroke-width:2px
+    style Step10 fill:#8e24aa,stroke:#4a148c,color:#fff,stroke-width:2px
+    style Complete fill:#2e7d32,stroke:#1b5e20,color:#fff,stroke-width:4px
+    style FailBack1 fill:#c62828,stroke:#b71c1c,color:#fff,stroke-width:2px
+    style FailBack2 fill:#c62828,stroke:#b71c1c,color:#fff,stroke-width:2px
 ```
 
 **Key Points:**

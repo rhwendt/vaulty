@@ -7,6 +7,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2025-01-XX
+
+### ⚠️ BREAKING CHANGES
+
+This is a major restructuring to align with official Claude Code best practices. **Migration required** for existing users.
+
+#### Directory Restructuring
+- **BREAKING**: Renamed `.claude.md` → `CLAUDE.md` (uppercase, no dot prefix)
+- **BREAKING**: Moved `memory/` → `.claude/rules/` (official auto-loaded rules location)
+- **BREAKING**: Moved `agents/` → `.claude/agents/` (official subagents location)
+
+#### Agent System Overhaul
+- **BREAKING**: Converted all agents from custom format to official Claude Code subagent format
+- **BREAKING**: All agents now use YAML frontmatter (name, description, tools)
+- **BREAKING**: Changed from manual invocation to automatic delegation based on descriptions
+- Removed extensive agent documentation sections (now concise prompts)
+- Agents no longer hardcode model selection - users control models via environment variables
+
+#### File Size Reduction
+- Reduced codebase by **4,019 lines** (4,850 deletions, 831 insertions)
+- Simplified agent files by 70-90% each
+- More concise CLAUDE.md (now focuses on system overview)
+
+### Added
+- Official YAML frontmatter format for all subagents
+- Automatic delegation system (no manual invocation needed)
+- Separate context windows for each subagent
+- Environment Configuration section in README.md with model control guidance
+- Comprehensive environment variable documentation (CLAUDE_CODE_SUBAGENT_MODEL, CLAUDE_ENV_FILE, etc.)
+- Shell configuration examples for zsh/bash
+- AWS Bedrock and Google Vertex AI setup instructions
+- Updated README "Staying Updated" section with new paths
+- Migration guidance in CHANGELOG
+
+### Changed
+- CLAUDE.md now emphasizes automatic delegation
+- All wiki-links updated: `[[memory/...]]` → `[[rules/...]]`
+- Subagent names use kebab-case (e.g., `git-helper`, `software-designer`)
+- Agent collaboration workflows now describe automatic coordination
+- Model selection now user-controlled via environment variables (no hardcoded models)
+- Agents default to Sonnet; users can override via CLAUDE_CODE_SUBAGENT_MODEL
+
+### Migration Guide
+For users with existing Vaulty repos:
+1. **Save your customizations**: `config.md`, `projects/*`, any custom rules
+2. **Fetch template updates**: `git fetch template`
+3. **Merge or cherry-pick**: Choose merge strategy based on your customizations
+4. **Resolve conflicts**: Keep your `config.md` and `projects/`, accept template changes for framework files
+5. See README "Staying Updated" section for detailed instructions
+
+## [1.1.0] - 2025-01-XX
+
 ### Added
 - Template repository documentation and contribution guidelines
 - GitHub issue templates for bug reports and feature requests
@@ -91,8 +143,9 @@ Vaulty uses [Semantic Versioning](https://semver.org/):
 
 **MAJOR.MINOR.PATCH** (e.g., 1.2.3)
 
-- **MAJOR** (1.x.x): Breaking changes to core framework structure
-  - Example: Restructuring agents/ or memory/ directories
+- **MAJOR** (2.x.x): Breaking changes to core framework structure
+  - Example: Restructuring directory layout (v2.0: memory/ → .claude/rules/)
+  - Example: Changing agent format (v2.0: custom → official subagents)
   - Example: Changing config.md format in incompatible ways
 
 - **MINOR** (x.1.x): New features, new agents, new memory files
@@ -122,10 +175,11 @@ git merge template/main --allow-unrelated-histories
 ```
 
 **Tips for merging updates:**
-- Framework files (agents/, memory/, templates/) can be merged
-- Your personal files (config.md, projects/) won't conflict
-- Review changes in CHANGELOG before merging
+- Framework files (`.claude/rules/`, `.claude/agents/`, templates/) can be merged
+- Your personal files (`config.md`, `projects/`) won't conflict
+- Review changes in CHANGELOG before merging (especially for BREAKING CHANGES)
 - Test with Claude after merging to ensure everything works
+- For v2.0+ migration, see "Migration Guide" in v2.0.0 changelog entry
 
 ## Watching for Updates
 
@@ -137,5 +191,7 @@ Want to know when new versions are released?
 
 ---
 
-[Unreleased]: https://github.com/rhwendt/vaulty/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/rhwendt/vaulty/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/rhwendt/vaulty/compare/v1.1.0...v2.0.0
+[1.1.0]: https://github.com/rhwendt/vaulty/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/rhwendt/vaulty/releases/tag/v1.0.0

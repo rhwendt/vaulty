@@ -10,13 +10,13 @@ Vaulty is a **template repository** designed for personal use. Users create thei
 
 These improve Vaulty for everyone:
 
-- **New or improved agents** (`agents/`)
-- **New or improved memory files** (`memory/`)
-- **Language-specific best practices** (`memory/languages/`)
+- **New or improved subagents** (`.claude/agents/`)
+- **New or improved rules files** (`.claude/rules/`)
+- **Language-specific best practices** (`.claude/rules/languages/`)
 - **Template improvements** (`projects/_templates/`)
 - **Documentation enhancements**
 - **Bug fixes in framework logic**
-- **New features for `.claude.md`**
+- **New features for `CLAUDE.md`**
 - **Interaction diagrams and examples**
 
 ### ❌ Personal Usage (Not for PRs)
@@ -51,13 +51,13 @@ These are specific to individual users:
 ### 1. Find Something to Improve
 
 **Good contribution ideas:**
-- Add a new programming language to `memory/languages/`
-- Improve an existing agent with better workflows
-- Add a new specialized agent (e.g., "security-agent.md")
+- Add a new programming language to `.claude/rules/languages/`
+- Improve an existing subagent with better workflows
+- Add a new specialized subagent (e.g., "security.md" in `.claude/agents/`)
 - Fix typos or improve documentation
 - Add examples to README
 - Improve templates in `projects/_templates/`
-- Add new memory files for domains (e.g., "memory/api-design.md")
+- Add new rules files for domains (e.g., `.claude/rules/api-design.md`)
 
 **Check existing issues:**
 - Look for issues tagged `good-first-issue`
@@ -78,7 +78,7 @@ git checkout -b feature/your-improvement
 
 # Commit with clear messages
 git add .
-git commit -m "feat: Add memory file for API design best practices"
+git commit -m "feat: Add rules file for API design best practices"
 
 # Push to your fork
 git push origin feature/your-improvement
@@ -95,21 +95,21 @@ git push origin feature/your-improvement
 **Example PR description:**
 ```markdown
 ## What
-Added a new memory file for API design best practices (`memory/api-design.md`)
+Added a new rules file for API design best practices (`.claude/rules/api-design.md`)
 
 ## Why
-Many developers use Vaulty for API development projects. This memory file provides REST/GraphQL design principles, versioning strategies, and documentation standards.
+Many developers use Vaulty for API development projects. This rules file provides REST/GraphQL design principles, versioning strategies, and documentation standards.
 
 ## How
-- Follows the same structure as other memory files
+- Follows the same structure as other rules files
 - References industry standards (REST, OpenAPI, GraphQL)
 - Includes practical examples
-- Can be referenced by Developer Agent and Architect Agent
+- Can be referenced by Developer and Architect subagents
 
 ## Testing
 - Tested with Claude on API design tasks
-- Verified Claude references the file when triggered with "design API" keywords
-- Checked integration with existing agents
+- Verified Claude references the file appropriately
+- Checked integration with existing subagents
 ```
 
 ### 4. Code Review
@@ -120,12 +120,10 @@ Many developers use Vaulty for API development projects. This memory file provid
 
 ## 📝 Contribution Guidelines
 
-### For New Memory Files
+### For New Rules Files
 
 **Structure:**
 ```markdown
-#memory #domain-name
-
 # Domain Name Best Practices
 
 ## When to Reference This File
@@ -148,29 +146,30 @@ Many developers use Vaulty for API development projects. This memory file provid
 ```
 
 **Requirements:**
-- Use Obsidian wiki links: `[[other-file]]`
-- Include relevant tags: `#memory #domain`
+- Use Obsidian wiki links: `[[other-file]]` (optional)
 - Clear, actionable guidance
 - Industry-standard best practices
 - Include examples where helpful
+- Place in `.claude/rules/` directory
 
-### For New Agents
+### For New Subagents
 
-**Structure:**
+**Structure (with YAML frontmatter):**
 ```markdown
-#agent #specialty-area
+---
+name: specialty-name
+model: claude-sonnet-4-5-20250929
+description: "Specialized agent for [specific task]. Triggered when user requests [specific actions]."
+---
 
 # Agent Name
 
 ## Role
 [Clear description of what this agent does]
 
-## Key Memory Files to Reference
-- [[memory/relevant-file-1]]
-- [[memory/relevant-file-2]]
-
-## Trigger Patterns
-[What words/phrases should invoke this agent]
+## Rules Referenced
+- `.claude/rules/relevant-file-1.md`
+- `.claude/rules/relevant-file-2.md`
 
 ## Workflow Steps
 [Step-by-step process the agent follows]
@@ -183,15 +182,17 @@ Many developers use Vaulty for API development projects. This memory file provid
 ```
 
 **Requirements:**
-- Clear, specific role definition
-- List relevant memory files to reference
-- Define trigger patterns (to add to `.claude.md`)
+- Use official Claude Code subagent format with YAML frontmatter
+- Clear `description` field (used for automatic delegation)
+- Specify appropriate `model` (opus for complex tasks, sonnet for operations)
+- List relevant rules files to reference
 - Include workflow steps
-- Show how it integrates with other agents
+- Show how it integrates with other subagents
+- Place in `.claude/agents/` directory
 
 ### For Language-Specific Files
 
-Follow the existing pattern in `memory/languages/`:
+Follow the existing pattern in `.claude/rules/languages/`:
 
 **Must include:**
 - ✅ Language philosophy and idioms
@@ -260,23 +261,23 @@ Before submitting your PR:
 ### When to Bump Versions
 
 **MAJOR (1.x.x)** - Breaking changes:
-- Restructuring core directories (agents/, memory/, projects/)
+- Restructuring core directories (`.claude/agents/`, `.claude/rules/`, `projects/`)
 - Incompatible changes to config.md format
-- Removing or renaming core agents
+- Removing or renaming core subagents
 - Changes that require users to modify their setup
 
 **MINOR (x.1.x)** - New features:
-- New agents
-- New memory files
+- New subagents
+- New rules files
 - New language guides
 - New templates or examples
-- New agent trigger patterns
+- Enhanced subagent capabilities
 
 **PATCH (x.x.1)** - Bug fixes and improvements:
 - Typo fixes
 - Documentation improvements
-- Bug fixes in agent logic
-- Clarifications to memory files
+- Bug fixes in subagent logic
+- Clarifications to rules files
 - Broken link fixes
 
 ### Release Process
@@ -288,7 +289,7 @@ Before submitting your PR:
 
 2. **Create Git Tag**
    ```bash
-   git tag -a v1.2.0 -m "Release v1.2.0: Add security agent and API design memory"
+   git tag -a v1.2.0 -m "Release v1.2.0: Add security subagent and API design rules"
    git push origin v1.2.0
    ```
 
@@ -309,14 +310,14 @@ Before submitting your PR:
 ## [1.2.0] - 2025-01-15
 
 ### Added
-- New Security Agent for security audits
-- New memory file for API design best practices
+- New Security subagent for security audits
+- New rules file for API design best practices
 
 ### Changed
-- Improved Git Agent workflow for better commit messages
+- Improved Git Helper workflow for better commit messages
 
 ### Fixed
-- Fixed broken wiki links in Developer Agent
+- Fixed broken references in Developer subagent
 
 ### Deprecated
 - Old project template (replaced with improved version)
