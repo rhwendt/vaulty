@@ -1,3 +1,7 @@
+---
+paths: "**/*.kt, **/*.kts"
+---
+
 #memory/language #kotlin #best-practices
 
 # Kotlin Language Best Practices

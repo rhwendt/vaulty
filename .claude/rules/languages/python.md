@@ -1,3 +1,7 @@
+---
+paths: "**/*.py"
+---
+
 #memory/language #python #best-practices
 
 # Python Language Best Practices

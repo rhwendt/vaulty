@@ -1,3 +1,7 @@
+---
+paths: "**/*.js, **/*.jsx, **/*.mjs, **/*.cjs"
+---
+
 #memory/language #javascript #best-practices
 
 # JavaScript Language Best Practices

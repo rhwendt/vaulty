@@ -1,3 +1,7 @@
+---
+paths: "**/*.go"
+---
+
 #memory/language #go #best-practices
 
 # Go Language Best Practices

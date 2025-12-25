@@ -1,3 +1,7 @@
+---
+paths: "**/*.java"
+---
+
 #memory/language #java #best-practices
 
 # Java Language Best Practices

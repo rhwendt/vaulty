@@ -1,3 +1,7 @@
+---
+paths: "**/*.cpp, **/*.cc, **/*.cxx, **/*.hpp, **/*.h, **/*.hxx"
+---
+
 #memory/language #cpp #cplusplus #best-practices
 
 # C++ Language Best Practices
