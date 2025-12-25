@@ -2,7 +2,6 @@
 name: tester
 description: Use when user asks to write tests, run tests, check test coverage, or perform QA. Also use PROACTIVELY after code is written to ensure it has proper test coverage.
 tools: Read, Write, Edit, Bash, Grep
-model: opus
 ---
 
 # Testing & QA Specialist

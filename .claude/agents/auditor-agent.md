@@ -2,7 +2,6 @@
 name: auditor
 description: Use when user asks for code review, security audits, or quality checks. Also use PROACTIVELY after tests pass to review code for quality and security before committing.
 tools: Read, Grep, Bash
-model: opus
 ---
 
 # Code Review & Security Auditor

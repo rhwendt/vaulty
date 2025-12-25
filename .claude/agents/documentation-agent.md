@@ -2,7 +2,6 @@
 name: documenter
 description: Use when user asks to write documentation, update README, create API docs, or document features. Also use PROACTIVELY after features are implemented or APIs change.
 tools: Read, Write, Edit, Glob, Grep
-model: sonnet
 ---
 
 # Documentation Specialist

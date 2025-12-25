@@ -47,24 +47,24 @@ All files in `.claude/rules/` are automatically loaded. Key rules include:
 
 Claude Code automatically delegates to specialized subagents based on your requests. All subagents are defined in `.claude/agents/` with YAML frontmatter.
 
-### Development Workflow (Opus Model)
+### Development Workflow
 - **Developer** (`developer`) - Writing code, implementing features, fixing bugs
 - **Tester** (`tester`) - Writing tests, running test suites, coverage
 - **Auditor** (`auditor`) - Code review, security audits, quality checks
 - **Software Designer** (`software-designer`) - Design patterns, code structure, refactoring
 
-### Project & Architecture (Opus Model)
+### Project & Architecture
 - **Project Designer** (`project-designer`) - New project planning from requirements
 - **Architect** (`architect`) - High-level design, architectural decisions, ADRs
 
-### Operations (Sonnet Model)
+### Operations
 - **Git Helper** (`git-helper`) - Version control operations
 - **Deployment** (`deployer`) - Deployments, CI/CD, releases
 - **Debugger** (`debugger`) - Investigating bugs, troubleshooting
 - **Project Manager** (`project-manager`) - Managing projects, tracking tasks
 - **Documenter** (`documenter`) - Creating/updating docs, READMEs, API docs
 
-**How It Works**: Subagents are automatically invoked based on their `description` field in the YAML frontmatter. You don't need to manually invoke them - Claude will delegate to the appropriate subagent based on your request.
+**How It Works**: Subagents are automatically invoked based on their `description` field in the YAML frontmatter. You don't need to manually invoke them - Claude will delegate to the appropriate subagent based on your request. Model selection is controlled by you via environment variables (see Environment Configuration below).
 
 ## Subagent Collaboration Workflows
 
@@ -107,6 +107,95 @@ Claude automatically delegates to subagents based on your request:
 | "debug", "error", "not working" | debugger | (multiple) |
 | "design pattern", "refactor" | software-designer | architecture-design |
 | "design a new project", "plan project" | project-designer | architecture-design, project-management |
+
+## Environment Configuration
+
+Vaulty agents work with any Claude model available to you. Control model selection and other behavior via environment variables in your shell configuration.
+
+### Model Configuration
+
+All subagents default to Sonnet unless you configure otherwise. To use different models:
+
+```bash
+# Set model for all subagents (overrides agent defaults)
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+
+# Or set main model (affects primary Claude Code thread)
+export ANTHROPIC_MODEL="claude-opus-4-5-20251101"
+```
+
+**Recommended model strategy:**
+- **High-thinking agents** (developer, tester, auditor, architect, software-designer, project-designer): Opus for complex reasoning
+- **Operational agents** (git-helper, debugger, deployer, documenter, project-manager): Sonnet for efficiency
+
+**Note:** Users control model selection via Claude Code app settings or environment variables. Vaulty doesn't hardcode model requirements.
+
+### Useful Environment Variables
+
+| Variable | Purpose | Example |
+|----------|---------|---------|
+| `CLAUDE_CODE_SUBAGENT_MODEL` | Override all subagent models | `export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"` |
+| `ANTHROPIC_API_KEY` | API key (if using API instead of subscription) | `export ANTHROPIC_API_KEY="sk-..."` |
+| `CLAUDE_ENV_FILE` | Shell script sourced before each bash command | `export CLAUDE_ENV_FILE="~/.claude-env.sh"` |
+| `MCP_TIMEOUT` | MCP server startup timeout (milliseconds) | `export MCP_TIMEOUT="10000"` |
+| `DEBUG` | Enable verbose debug logging | `export DEBUG=1` |
+| `ANTHROPIC_LOG` | Anthropic SDK logging level | `export ANTHROPIC_LOG="debug"` |
+
+### Setting Environment Variables
+
+**Permanent configuration** (add to shell config):
+
+For zsh (macOS/modern Linux):
+```bash
+# Add to ~/.zshrc
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"
+
+# Reload: source ~/.zshrc
+```
+
+For bash:
+```bash
+# Add to ~/.bash_profile or ~/.bashrc
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"
+
+# Reload: source ~/.bash_profile
+```
+
+**Environment persistence file** (recommended for project-specific settings):
+
+Create `~/.claude-env.sh`:
+```bash
+#!/bin/bash
+# Load environment for all Claude Code bash commands
+export NODE_ENV=development
+export DB_URL="postgresql://localhost/mydb"
+source ~/.nvm/nvm.sh  # Load version managers
+```
+
+Then set: `export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"`
+
+### AWS Bedrock / Vertex AI
+
+For enterprise users using AWS Bedrock or Google Vertex AI:
+
+**AWS Bedrock:**
+```bash
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-east-1
+# AWS credentials via CLI or environment variables
+```
+
+**Google Vertex AI:**
+```bash
+export CLAUDE_CODE_USE_VERTEX=1
+export ANTHROPIC_VERTEX_PROJECT_ID=my-project-123
+export CLOUD_ML_REGION=us-east3
+# Authenticate: gcloud auth application-default login
+```
+
+See official Claude Code documentation for complete environment variable reference.
 
 ## Best Practices
 

@@ -2,7 +2,6 @@
 name: project-designer
 description: Use when user wants to design a new project from scratch, plan a greenfield project, or needs help creating a project that does something. Use PROACTIVELY when user says "help me design", "I want to create/build", "plan a project", or "design a system".
 tools: Read, Write, Glob, Grep, WebSearch
-model: opus
 ---
 
 # Project Designer & Planning Specialist

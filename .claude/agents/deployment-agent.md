@@ -2,7 +2,6 @@
 name: deployer
 description: Use when user asks to deploy, release, create deployment pipelines, run database migrations, or rollback deployments. Also use for CI/CD setup.
 tools: Bash, Read, Write, Edit, Grep
-model: sonnet
 ---
 
 # Deployment & DevOps Specialist

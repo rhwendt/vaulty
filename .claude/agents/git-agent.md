@@ -2,7 +2,6 @@
 name: git-helper
 description: Use PROACTIVELY when user mentions git operations, commits, version control, pull requests, branches, merging, or pushing code. Also use after code changes are complete and ready for version control.
 tools: Bash, Read, Grep, Write, Edit
-model: sonnet
 ---
 
 # Git Operations Specialist

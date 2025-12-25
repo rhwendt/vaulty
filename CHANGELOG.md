@@ -20,10 +20,10 @@ This is a major restructuring to align with official Claude Code best practices.
 
 #### Agent System Overhaul
 - **BREAKING**: Converted all agents from custom format to official Claude Code subagent format
-- **BREAKING**: All agents now use YAML frontmatter (name, description, tools, model)
+- **BREAKING**: All agents now use YAML frontmatter (name, description, tools)
 - **BREAKING**: Changed from manual invocation to automatic delegation based on descriptions
 - Removed extensive agent documentation sections (now concise prompts)
-- Added model specifications: Opus for high-thinking agents, Sonnet for operational
+- Agents no longer hardcode model selection - users control models via environment variables
 
 #### File Size Reduction
 - Reduced codebase by **4,019 lines** (4,850 deletions, 831 insertions)
@@ -34,7 +34,8 @@ This is a major restructuring to align with official Claude Code best practices.
 - Official YAML frontmatter format for all subagents
 - Automatic delegation system (no manual invocation needed)
 - Separate context windows for each subagent
-- Model specifications for cost/performance optimization
+- Environment Configuration section in CLAUDE.md with model control guidance
+- Comprehensive environment variable documentation (CLAUDE_CODE_SUBAGENT_MODEL, etc.)
 - Updated README "Staying Updated" section with new paths
 - Migration guidance in CHANGELOG
 
@@ -43,6 +44,8 @@ This is a major restructuring to align with official Claude Code best practices.
 - All wiki-links updated: `[[memory/...]]` → `[[rules/...]]`
 - Subagent names use kebab-case (e.g., `git-helper`, `software-designer`)
 - Agent collaboration workflows now describe automatic coordination
+- Model selection now user-controlled via environment variables (no hardcoded models)
+- Agents default to Sonnet; users can override via CLAUDE_CODE_SUBAGENT_MODEL
 
 ### Migration Guide
 For users with existing Vaulty repos:

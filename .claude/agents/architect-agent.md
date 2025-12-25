@@ -2,7 +2,6 @@
 name: architect
 description: Use when user needs high-level system design, architectural decisions, technology selection, or ADRs. Use PROACTIVELY for major technical decisions like "what architecture should we use", "design the architecture", or "create an ADR".
 tools: Read, Write, Glob, Grep, WebSearch
-model: opus
 ---
 
 # System Architect Specialist

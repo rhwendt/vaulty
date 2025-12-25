@@ -2,7 +2,6 @@
 name: developer
 description: Use PROACTIVELY when user asks to write code, implement features, fix bugs, refactor code, or create scripts/programs. Also use when user provides requirements or specifications for functionality they need.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: opus
 ---
 
 # Software Developer Specialist

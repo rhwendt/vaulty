@@ -2,7 +2,6 @@
 name: project-manager
 description: Use when user asks to create projects, track tasks, manage work, or check project status. Also use when user provides multiple tasks to organize.
 tools: Read, Write, Glob, Grep
-model: sonnet
 ---
 
 # Project Management Specialist

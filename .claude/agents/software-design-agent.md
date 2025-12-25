@@ -2,7 +2,6 @@
 name: software-designer
 description: Use when user asks about design patterns, refactoring code, improving code structure, or applying SOLID principles. Use PROACTIVELY when code needs better design or when planning the structure of new features.
 tools: Read, Write, Edit, Glob, Grep
-model: opus
 ---
 
 # Software Design Specialist
