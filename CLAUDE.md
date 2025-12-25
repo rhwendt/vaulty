@@ -43,84 +43,86 @@ All files in `.claude/rules/` are automatically loaded. Key rules include:
 - **project-management.md** - Task tracking and project organization
 - **communication.md** - Communication standards and templates
 
-## Specialized Agents
+## Specialized Subagents (Automatic Delegation)
 
-Invoke these agents based on the task (see `.claude/agents/` for details):
+Claude Code automatically delegates to specialized subagents based on your requests. All subagents are defined in `.claude/agents/` with YAML frontmatter.
 
-### Development Workflow
-- **Developer Agent** - Writing code, implementing features, fixing bugs
-- **Tester Agent** - Writing tests, running test suites, coverage
-- **Auditor Agent** - Code review, security audits, quality checks
-- **Software Design Agent** - Design patterns, code structure, refactoring
+### Development Workflow (Opus Model)
+- **Developer** (`developer`) - Writing code, implementing features, fixing bugs
+- **Tester** (`tester`) - Writing tests, running test suites, coverage
+- **Auditor** (`auditor`) - Code review, security audits, quality checks
+- **Software Designer** (`software-designer`) - Design patterns, code structure, refactoring
 
-### Project & Architecture
-- **Project Designer Agent** - New project planning from requirements
-- **Architect Agent** - High-level design, architectural decisions, ADRs
-- **Project Manager Agent** - Managing projects, tracking tasks
+### Project & Architecture (Opus Model)
+- **Project Designer** (`project-designer`) - New project planning from requirements
+- **Architect** (`architect`) - High-level design, architectural decisions, ADRs
 
-### Operations
-- **Git Agent** - Version control operations
-- **Deployment Agent** - Deployments, CI/CD, releases
-- **Debugger Agent** - Investigating bugs, troubleshooting
+### Operations (Sonnet Model)
+- **Git Helper** (`git-helper`) - Version control operations
+- **Deployment** (`deployer`) - Deployments, CI/CD, releases
+- **Debugger** (`debugger`) - Investigating bugs, troubleshooting
+- **Project Manager** (`project-manager`) - Managing projects, tracking tasks
+- **Documenter** (`documenter`) - Creating/updating docs, READMEs, API docs
 
-### Documentation
-- **Documentation Agent** - Creating/updating docs, READMEs, API docs
+**How It Works**: Subagents are automatically invoked based on their `description` field in the YAML frontmatter. You don't need to manually invoke them - Claude will delegate to the appropriate subagent based on your request.
 
-## Agent Collaboration Workflow
+## Subagent Collaboration Workflows
+
+These workflows describe ideal delegation patterns. Subagents may coordinate with each other automatically.
 
 ### Complete Development Workflow
-1. Project Manager → Creates/updates tasks
-2. Architect → Designs high-level architecture (if major feature)
-3. Software Design → Designs code structure and patterns
-4. Developer → Implements code
-5. Tester → Writes and runs tests (loops back if fails)
-6. Auditor → Reviews for quality and security (loops back if fails)
-7. Git → Commits and pushes
-8. Documentation → Updates docs
-9. Deployment → Deploys to environments
-10. Project Manager → Marks task complete
+1. **Project Manager** - Creates/updates tasks
+2. **Architect** - Designs high-level architecture (if major feature)
+3. **Software Designer** - Designs code structure and patterns
+4. **Developer** - Implements code
+5. **Tester** - Writes and runs tests
+6. **Auditor** - Reviews for quality and security
+7. **Git Helper** - Commits and pushes
+8. **Documenter** - Updates documentation
+9. **Deployment** - Deploys to environments
+10. **Project Manager** - Marks task complete
 
 ### Quick Bug Fix Workflow
-1. Debugger → Investigates root cause
-2. Developer → Implements fix
-3. Tester → Adds regression test
-4. Auditor → Reviews fix
-5. Git → Commits
-6. Deployment → Deploys hotfix (if needed)
+1. **Debugger** - Investigates root cause
+2. **Developer** - Implements fix
+3. **Tester** - Adds regression test
+4. **Auditor** - Reviews fix
+5. **Git Helper** - Commits fix
+6. **Deployment** - Deploys hotfix (if needed)
 
-## Trigger Patterns
+## Automatic Delegation Patterns
 
-Claude automatically invokes appropriate agents based on these patterns:
+Claude automatically delegates to subagents based on your request:
 
-| User Says | Agent Invoked | Rules Referenced |
-|-----------|---------------|------------------|
-| "commit", "push", "PR" | Git Agent | git-workflow |
-| "implement", "write code", "fix bug" | Developer → Tester → Auditor → Git | architecture-design, code-review |
-| "test", "run tests", "coverage" | Tester Agent | testing-qa |
-| "review", "audit", "security check" | Auditor Agent | code-review, testing-qa |
-| "document", "README", "API docs" | Documentation Agent | documentation |
-| "create project", "track task" | Project Manager Agent | project-management |
-| "design architecture", "ADR" | Architect Agent | architecture-design |
-| "deploy", "release", "CI/CD" | Deployment Agent | deployment |
-| "debug", "error", "not working" | Debugger Agent | (multiple) |
-| "design pattern", "refactor" | Software Design Agent | architecture-design |
-| "design a new project", "plan project" | Project Designer Agent | architecture-design, project-management |
+| When You Say... | Subagent Delegated | Rules Referenced |
+|-----------------|-------------------|------------------|
+| "commit", "push", "PR" | git-helper | git-workflow |
+| "implement", "write code", "fix bug" | developer | architecture-design, code-review |
+| "test", "run tests", "coverage" | tester | testing-qa |
+| "review", "audit", "security check" | auditor | code-review, testing-qa |
+| "document", "README", "API docs" | documenter | documentation |
+| "create project", "track task" | project-manager | project-management |
+| "design architecture", "ADR" | architect | architecture-design |
+| "deploy", "release", "CI/CD" | deployer | deployment |
+| "debug", "error", "not working" | debugger | (multiple) |
+| "design pattern", "refactor" | software-designer | architecture-design |
+| "design a new project", "plan project" | project-designer | architecture-design, project-management |
 
 ## Best Practices
 
 ### Always ✅
-- Reference relevant rules before taking action
-- Use appropriate specialized agents
-- Follow agent collaboration workflows
+- Check `[[config]]` first for user preferences
+- Reference relevant `.claude/rules/` files
+- Delegate to appropriate subagents automatically
 - Update project/task status as work progresses
 - Document decisions and rationale
 - Test code before committing
 - Review code before merging
 
 ### Never ❌
+- Skip checking user config
 - Skip referencing rules for standard operations
 - Commit code without testing and review
-- Skip agent workflows (Developer → Tester → Auditor → Git)
 - Make architectural decisions without consulting `.claude/rules/architecture-design.md`
 - Deploy without consulting `.claude/rules/deployment.md`
 - Commit secrets or credentials
@@ -140,16 +142,17 @@ Claude automatically invokes appropriate agents based on these patterns:
 ## Customization
 
 This system is a template. You can:
-- Add new rules in `.claude/rules/`
-- Create custom agents in `.claude/agents/`
-- Modify existing agents and rules
+- Add new rules in `.claude/rules/` (auto-loaded)
+- Create custom subagents in `.claude/agents/` (YAML frontmatter format)
+- Modify existing subagents and rules
 - Add project-specific documentation
 - Update `config.md` with your preferences
 
 ## Notes
 
 - This is an Obsidian vault - use `[[wiki-links]]` and tags
-- Rules contain best practices (auto-loaded each session)
-- Agents are specialized personas for specific tasks
-- Projects directory contains work-in-progress and completed projects
+- **Rules** in `.claude/rules/` are auto-loaded into every session
+- **Subagents** in `.claude/agents/` use official Claude Code format with YAML frontmatter
+- **Automatic delegation**: Subagents are invoked based on their description field
+- **Projects** directory contains work-in-progress and completed projects
 - Always check `[[config]]` for personal settings first
