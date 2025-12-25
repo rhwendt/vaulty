@@ -156,6 +156,95 @@ When interacting with Claude in this repository:
 ```
 → Claude will use Project Manager Agent and create structured project files
 
+## ⚙️ Environment Configuration
+
+Vaulty agents work with any Claude model available to you. Control model selection and other Claude Code behavior via environment variables.
+
+### Model Configuration
+
+All subagents default to Sonnet unless you configure otherwise. To use different models:
+
+```bash
+# Set model for all subagents (overrides defaults)
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+
+# Or set main model (affects primary Claude Code thread)
+export ANTHROPIC_MODEL="claude-opus-4-5-20251101"
+```
+
+**Recommended model strategy:**
+- **High-thinking agents** (developer, tester, auditor, architect, software-designer, project-designer): Opus for complex reasoning
+- **Operational agents** (git-helper, debugger, deployer, documenter, project-manager): Sonnet for efficiency
+
+**Note:** Vaulty doesn't hardcode model requirements - it works with any Claude model available to you.
+
+### Useful Environment Variables
+
+| Variable | Purpose | Example |
+|----------|---------|---------|
+| `CLAUDE_CODE_SUBAGENT_MODEL` | Override all subagent models | `export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"` |
+| `ANTHROPIC_API_KEY` | API key (if using API instead of subscription) | `export ANTHROPIC_API_KEY="sk-..."` |
+| `CLAUDE_ENV_FILE` | Shell script sourced before each bash command | `export CLAUDE_ENV_FILE="~/.claude-env.sh"` |
+| `MCP_TIMEOUT` | MCP server startup timeout (milliseconds) | `export MCP_TIMEOUT="10000"` |
+| `DEBUG` | Enable verbose debug logging | `export DEBUG=1` |
+| `ANTHROPIC_LOG` | Anthropic SDK logging level | `export ANTHROPIC_LOG="debug"` |
+
+### Setting Environment Variables
+
+**Permanent configuration** (add to shell config):
+
+For zsh (macOS/modern Linux):
+```bash
+# Add to ~/.zshrc
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"
+
+# Reload: source ~/.zshrc
+```
+
+For bash:
+```bash
+# Add to ~/.bash_profile or ~/.bashrc
+export CLAUDE_CODE_SUBAGENT_MODEL="claude-opus-4-5-20251101"
+export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"
+
+# Reload: source ~/.bash_profile
+```
+
+**Environment persistence file** (recommended for project-specific settings):
+
+Create `~/.claude-env.sh`:
+```bash
+#!/bin/bash
+# Load environment for all Claude Code bash commands
+export NODE_ENV=development
+export DB_URL="postgresql://localhost/mydb"
+source ~/.nvm/nvm.sh  # Load version managers
+```
+
+Then set: `export CLAUDE_ENV_FILE="$HOME/.claude-env.sh"`
+
+### AWS Bedrock / Vertex AI
+
+For enterprise users using AWS Bedrock or Google Vertex AI:
+
+**AWS Bedrock:**
+```bash
+export CLAUDE_CODE_USE_BEDROCK=1
+export AWS_REGION=us-east-1
+# AWS credentials via AWS CLI config or environment variables
+```
+
+**Google Vertex AI:**
+```bash
+export CLAUDE_CODE_USE_VERTEX=1
+export ANTHROPIC_VERTEX_PROJECT_ID=my-project-123
+export CLOUD_ML_REGION=us-east3
+# Authenticate: gcloud auth application-default login
+```
+
+See [official Claude Code documentation](https://code.claude.com/docs/en/settings) for complete environment variable reference.
+
 ## 📁 Repository Structure
 
 ```

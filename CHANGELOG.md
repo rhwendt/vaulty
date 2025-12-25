@@ -34,8 +34,10 @@ This is a major restructuring to align with official Claude Code best practices.
 - Official YAML frontmatter format for all subagents
 - Automatic delegation system (no manual invocation needed)
 - Separate context windows for each subagent
-- Environment Configuration section in CLAUDE.md with model control guidance
-- Comprehensive environment variable documentation (CLAUDE_CODE_SUBAGENT_MODEL, etc.)
+- Environment Configuration section in README.md with model control guidance
+- Comprehensive environment variable documentation (CLAUDE_CODE_SUBAGENT_MODEL, CLAUDE_ENV_FILE, etc.)
+- Shell configuration examples for zsh/bash
+- AWS Bedrock and Google Vertex AI setup instructions
 - Updated README "Staying Updated" section with new paths
 - Migration guidance in CHANGELOG
 
