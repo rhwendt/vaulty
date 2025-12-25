@@ -142,7 +142,7 @@ When interacting with Claude in this repository:
 ```
 "Commit these changes to git"
 ```
-→ Claude will use the Git Agent and reference `memory/git-workflow.md`
+→ Claude will use the Git Helper Agent and reference `.claude/rules/git-workflow.md`
 
 **For Development:**
 ```
@@ -160,48 +160,49 @@ When interacting with Claude in this repository:
 
 ```
 vaulty/
-├── .claude.md                  # Main instructions for Claude (trigger words, workflows)
+├── CLAUDE.md                   # Main instructions for Claude (trigger words, workflows)
 ├── README.md                   # This file
 ├── .obsidian/                  # Obsidian configuration
 │
 ├── config.template.md          # Template for your personal configuration
 ├── config.md                   # YOUR personal config (git-ignored, create from template)
 │
-├── memory/                     # Context memory files (best practices)
-│   ├── git-workflow.md         # Git operations and standards
-│   ├── project-management.md   # Project and task management
-│   ├── documentation.md        # Documentation standards
-│   ├── code-review.md          # Code review guidelines
-│   ├── testing-qa.md           # Testing and QA practices
-│   ├── deployment.md           # Deployment procedures
-│   ├── communication.md        # Communication standards
-│   ├── architecture-design.md  # Architecture patterns and principles
-│   └── languages/              # Language-specific best practices
-│       ├── python.md           # Python idioms, PEP 8, type hints
-│       ├── javascript.md       # JavaScript ES6+, async patterns
-│       ├── typescript.md       # TypeScript types, strict mode
-│       ├── go.md               # Go idioms, goroutines, channels
-│       ├── rust.md             # Rust ownership, borrowing, traits
-│       ├── java.md             # Java patterns, Spring Boot
-│       ├── csharp.md           # C# async/await, LINQ, .NET
-│       ├── cpp.md              # C++ modern features, RAII
-│       ├── php.md              # PHP 8+, Laravel patterns
-│       ├── ruby.md             # Ruby idioms, Rails patterns
-│       ├── swift.md            # Swift optionals, protocols
-│       └── kotlin.md           # Kotlin null safety, coroutines
-│
-├── agents/                     # Specialized agent prompts
-│   ├── git-agent.md            # Git operations specialist
-│   ├── developer-agent.md      # Code development specialist
-│   ├── tester-agent.md         # Testing and QA specialist
-│   ├── auditor-agent.md        # Code review and security specialist
-│   ├── documentation-agent.md  # Documentation specialist
-│   ├── project-manager-agent.md # Project management specialist
-│   ├── project-designer-agent.md # New project planning and design specialist
-│   ├── architect-agent.md      # Architecture and design specialist
-│   ├── deployment-agent.md     # Deployment and DevOps specialist
-│   ├── debugger-agent.md       # Debugging and troubleshooting specialist
-│   └── software-design-agent.md # Design patterns specialist
+├── .claude/                    # Claude Code configuration
+│   ├── rules/                  # Best practices (auto-loaded)
+│   │   ├── git-workflow.md     # Git operations and standards
+│   │   ├── project-management.md # Project and task management
+│   │   ├── documentation.md    # Documentation standards
+│   │   ├── code-review.md      # Code review guidelines
+│   │   ├── testing-qa.md       # Testing and QA practices
+│   │   ├── deployment.md       # Deployment procedures
+│   │   ├── communication.md    # Communication standards
+│   │   ├── architecture-design.md # Architecture patterns and principles
+│   │   └── languages/          # Language-specific best practices
+│   │       ├── python.md       # Python idioms, PEP 8, type hints
+│   │       ├── javascript.md   # JavaScript ES6+, async patterns
+│   │       ├── typescript.md   # TypeScript types, strict mode
+│   │       ├── go.md           # Go idioms, goroutines, channels
+│   │       ├── rust.md         # Rust ownership, borrowing, traits
+│   │       ├── java.md         # Java patterns, Spring Boot
+│   │       ├── csharp.md       # C# async/await, LINQ, .NET
+│   │       ├── cpp.md          # C++ modern features, RAII
+│   │       ├── php.md          # PHP 8+, Laravel patterns
+│   │       ├── ruby.md         # Ruby idioms, Rails patterns
+│   │       ├── swift.md        # Swift optionals, protocols
+│   │       └── kotlin.md       # Kotlin null safety, coroutines
+│   │
+│   └── agents/                 # Specialized subagents (YAML frontmatter)
+│       ├── git-helper.md       # Git operations specialist
+│       ├── developer.md        # Code development specialist
+│       ├── tester.md           # Testing and QA specialist
+│       ├── auditor.md          # Code review and security specialist
+│       ├── documenter.md       # Documentation specialist
+│       ├── project-manager.md  # Project management specialist
+│       ├── project-designer.md # New project planning and design specialist
+│       ├── architect.md        # Architecture and design specialist
+│       ├── deployer.md         # Deployment and DevOps specialist
+│       ├── debugger.md         # Debugging and troubleshooting specialist
+│       └── software-designer.md # Design patterns specialist
 │
 └── projects/                   # Your projects go here
     ├── _templates/             # Templates for new projects and tasks
@@ -301,9 +302,9 @@ When you ask Claude to implement a feature, agents collaborate:
 6. Deployment → Deploys hotfix
 ```
 
-## 📝 Memory Files
+## 📝 Rules Files (Best Practices)
 
-Memory files contain best practices that agents reference:
+Rules files in `.claude/rules/` contain best practices that agents reference:
 
 - **git-workflow.md**: How to commit, branch, create PRs
 - **testing-qa.md**: Testing standards, coverage requirements
@@ -316,7 +317,7 @@ Memory files contain best practices that agents reference:
 
 ### 🔤 Language-Specific Best Practices
 
-Each language has its own comprehensive guide in `memory/languages/`:
+Each language has its own comprehensive guide in `.claude/rules/languages/`:
 
 | Language | Key Topics |
 |----------|------------|
@@ -365,13 +366,13 @@ Claude will:
 You: "Write a Python function to validate email addresses"
 
 Claude will:
-1. Use Developer Agent (references memory/architecture-design.md)
+1. Use Developer Agent (references .claude/rules/architecture-design.md)
 2. Write the function with proper error handling
-3. Use Tester Agent (references memory/testing-qa.md)
+3. Use Tester Agent (references .claude/rules/testing-qa.md)
 4. Write comprehensive tests
-5. Use Auditor Agent (references memory/code-review.md)
+5. Use Auditor Agent (references .claude/rules/code-review.md)
 6. Review for security and quality
-7. Use Git Agent (references memory/git-workflow.md)
+7. Use Git Helper Agent (references .claude/rules/git-workflow.md)
 8. Commit with proper message
 ```
 
@@ -382,7 +383,7 @@ You: "Deploy this to production"
 
 Claude will:
 1. Use Deployment Agent
-2. Reference memory/deployment.md
+2. Reference .claude/rules/deployment.md
 3. Run pre-deployment checklist
 4. Execute deployment steps
 5. Monitor deployment
@@ -391,43 +392,49 @@ Claude will:
 
 ## 🔧 Customization
 
-### Adding New Memory Files
+### Adding New Rules Files
 
-Create a new file in `memory/` for your domain:
+Create a new file in `.claude/rules/` for your domain:
 
 ```markdown
-#memory/your-domain
-
 # Your Domain Best Practices
 
-## When to Use
-...
+## When to Reference This File
+[Explain when agents should use this]
 
 ## Best Practices
 ...
+
+## Examples
+...
 ```
 
-### Adding Custom Agents
+### Adding Custom Subagents
 
-Create a new agent in `agents/`:
+Create a new subagent in `.claude/agents/` using the official format with YAML frontmatter:
 
 ```markdown
-#agent #your-specialty
+---
+name: your-specialty
+model: claude-sonnet-4-5-20250929
+description: "Specialized agent for [specific task]. Triggered when user requests [specific actions]."
+---
 
 # Your Custom Agent
 
 ## Role
 What this agent does...
 
-## Key Memory Files
-- [[memory/relevant-file]]
+## Rules Referenced
+- `.claude/rules/relevant-file.md`
 
-## Trigger Patterns
-- "trigger word 1"
-- "trigger word 2"
+## Workflow Steps
+1. Step one
+2. Step two
+...
 ```
 
-Then update `.claude.md` to include your new agent's trigger patterns.
+Subagents are automatically delegated based on their `description` field in the YAML frontmatter.
 
 ### Creating Projects
 
