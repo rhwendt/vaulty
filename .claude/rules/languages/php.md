@@ -1,3 +1,7 @@
+---
+paths: "**/*.php"
+---
+
 #memory/language #php #best-practices
 
 # PHP Language Best Practices

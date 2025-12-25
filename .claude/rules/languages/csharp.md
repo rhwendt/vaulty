@@ -1,3 +1,7 @@
+---
+paths: "**/*.cs"
+---
+
 #memory/language #csharp #best-practices
 
 # C# Language Best Practices

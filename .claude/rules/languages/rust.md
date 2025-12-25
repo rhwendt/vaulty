@@ -1,3 +1,7 @@
+---
+paths: "**/*.rs"
+---
+
 #memory/language #rust #best-practices
 
 # Rust Language Best Practices

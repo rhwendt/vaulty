@@ -1,3 +1,7 @@
+---
+paths: "**/*.ts, **/*.tsx"
+---
+
 #memory/language #typescript #best-practices
 
 # TypeScript Language Best Practices
