@@ -8,7 +8,7 @@ Vaulty is an **Obsidian vault** that serves as a comprehensive context memory sy
 
 - **Memory Files**: Best practices and guidelines for different domains (git, testing, deployment, etc.)
 - **Language-Specific Best Practices**: Detailed guides for 12 programming languages with idioms, patterns, and tooling
-- **Specialized Agents**: Expert personas that Claude can invoke for specific tasks
+- **Specialized Agents**: Built-in subagent types Claude can delegate to via the Task tool
 - **Project Management**: Structured system for tracking projects and tasks
 - **Agent Collaboration**: Workflows where agents work together (Developer → Tester → Auditor → Git)
 
@@ -262,7 +262,7 @@ vaulty/
 │   │       ├── swift.md        # Swift optionals, protocols
 │   │       └── kotlin.md       # Kotlin null safety, coroutines
 │   │
-│   └── agents/                 # Specialized subagents (YAML frontmatter)
+│   └── agents/                 # Agent instruction files (read before delegating)
 │       ├── git-helper.md       # Git operations specialist
 │       ├── developer.md        # Code development specialist
 │       ├── tester.md           # Testing and QA specialist
@@ -367,32 +367,37 @@ Create a new file in `.claude/rules/` for your domain:
 ...
 ```
 
-### Adding Custom Subagents
+### Adding Agent Instruction Files
 
-Create a new subagent in `.claude/agents/` using the official format with YAML frontmatter:
+The `.claude/agents/` directory contains instruction files that Claude reads before delegating to a built-in subagent type. These provide domain-specific context and guidelines.
+
+**Important**: These files do NOT create new subagent types. Claude Code has a fixed set of built-in subagent types (`developer`, `tester`, `auditor`, `git-helper`, `debugger`, `deployer`, `documenter`, `architect`, `software-designer`, `project-manager`, `project-designer`, `Explore`, `Plan`).
+
+Create instruction files following this format:
 
 ```markdown
 ---
-name: your-specialty
-model: claude-sonnet-4-5-20250929
-description: "Specialized agent for [specific task]. Triggered when user requests [specific actions]."
+name: agent-name
+description: When to use this agent (for human reference)
+tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-# Your Custom Agent
+# Agent Title
 
 ## Role
-What this agent does...
+What this agent focuses on...
 
-## Rules Referenced
-- `.claude/rules/relevant-file.md`
+## Before Starting
+- Check config.md for user preferences
+- Reference relevant `.claude/rules/` files
 
-## Workflow Steps
+## Guidelines
 1. Step one
 2. Step two
 ...
 ```
 
-Subagents are automatically delegated based on their `description` field in the YAML frontmatter.
+Claude should read the relevant instruction file before calling the Task tool to include context in the delegation prompt.
 
 ### Creating Projects
 

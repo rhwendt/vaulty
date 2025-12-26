@@ -1,6 +1,6 @@
 ---
 name: deployer
-description: Use when user asks to deploy, release, create deployment pipelines, run database migrations, or rollback deployments. Also use for CI/CD setup.
+description: Use when user asks to deploy, release, create deployment pipelines, run database migrations, or rollback deployments. Also use PROACTIVELY for CI/CD setup and when deployment is the next logical step after code is committed.
 tools: Bash, Read, Write, Edit, Grep
 ---
 

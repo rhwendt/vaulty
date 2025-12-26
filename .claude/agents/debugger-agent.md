@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: Use when user reports errors, bugs, or says something is "not working". Also use when debugging issues, investigating problems, or troubleshooting failures.
+description: Use PROACTIVELY when user reports errors, bugs, or says something is "not working". Also use when debugging issues, investigating problems, or troubleshooting failures.
 tools: Read, Bash, Grep, Glob
 ---
 

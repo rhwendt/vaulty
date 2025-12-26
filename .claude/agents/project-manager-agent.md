@@ -1,6 +1,6 @@
 ---
 name: project-manager
-description: Use when user asks to create projects, track tasks, manage work, or check project status. Also use when user provides multiple tasks to organize.
+description: Use PROACTIVELY when user asks to create projects, track tasks, manage work, or check project status. Also use when user provides multiple tasks to organize or when coordinating multi-step workflows.
 tools: Read, Write, Glob, Grep
 ---
 
