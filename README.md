@@ -8,7 +8,7 @@ Vaulty is an **Obsidian vault** that serves as a comprehensive context memory sy
 
 - **Memory Files**: Best practices and guidelines for different domains (git, testing, deployment, etc.)
 - **Language-Specific Best Practices**: Detailed guides for 12 programming languages with idioms, patterns, and tooling
-- **Specialized Agents**: Expert personas that Claude can invoke for specific tasks
+- **Specialized Agents**: Built-in subagent types Claude can delegate to via the Task tool
 - **Project Management**: Structured system for tracking projects and tasks
 - **Agent Collaboration**: Workflows where agents work together (Developer → Tester → Auditor → Git)
 
@@ -142,19 +142,19 @@ When interacting with Claude in this repository:
 ```
 "Commit these changes to git"
 ```
-→ Claude will use the Git Helper Agent and reference `.claude/rules/git-workflow.md`
+→ Claude should delegate to `git-helper` subagent, referencing `.claude/rules/git-workflow.md`
 
 **For Development:**
 ```
 "Write a Python script to process JSON files"
 ```
-→ Claude will use Developer Agent → Tester Agent → Auditor Agent → Git Agent workflow
+→ Claude should follow the workflow: `developer` → `tester` → `auditor` → `git-helper`
 
 **For Project Management:**
 ```
 "Create a new project for building a REST API"
 ```
-→ Claude will use Project Manager Agent and create structured project files
+→ Claude should delegate to `project-manager` subagent with project templates
 
 ## ⚙️ Environment Configuration
 
@@ -280,7 +280,7 @@ vaulty/
 │   │       ├── swift.md        # Swift optionals, protocols
 │   │       └── kotlin.md       # Kotlin null safety, coroutines
 │   │
-│   └── agents/                 # Specialized subagents (YAML frontmatter)
+│   └── agents/                 # Agent instruction files (read before delegating)
 │       ├── git-helper.md       # Git operations specialist
 │       ├── developer.md        # Code development specialist
 │       ├── tester.md           # Testing and QA specialist
@@ -307,88 +307,90 @@ vaulty/
 
 ## 🤖 Specialized Agents
 
-Claude will automatically invoke specialized agents based on trigger words:
+Claude Code has built-in subagent types that can be delegated to using the Task tool. The `.claude/agents/` files provide instructions for Claude to read before delegating:
 
 ### Development Workflow Agents
 
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Developer** | Write and modify code | "write", "implement", "create script", "fix bug" |
-| **Tester** | Write and run tests | "test", "write tests", "check coverage" |
-| **Auditor** | Review code for quality/security | "review", "audit", "check for issues" |
-| **Software Design** | Apply design patterns | "design pattern", "refactor", "improve design" |
+| Agent (subagent_type) | Purpose | Use When User Says |
+|----------------------|---------|-------------------|
+| **developer** | Write and modify code | "write", "implement", "create script", "fix bug" |
+| **tester** | Write and run tests | "test", "write tests", "check coverage" |
+| **auditor** | Review code for quality/security | "review", "audit", "check for issues" |
+| **software-designer** | Apply design patterns | "design pattern", "refactor", "improve design" |
 
 ### Operations Agents
 
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Git** | Version control operations | "commit", "push", "pull request", "merge" |
-| **Deployment** | Deploy and release | "deploy", "release", "rollback", "CI/CD" |
-| **Debugger** | Investigate issues | "debug", "error", "bug", "not working" |
+| Agent (subagent_type) | Purpose | Use When User Says |
+|----------------------|---------|-------------------|
+| **git-helper** | Version control operations | "commit", "push", "pull request", "merge" |
+| **deployer** | Deploy and release | "deploy", "release", "rollback", "CI/CD" |
+| **debugger** | Investigate issues | "debug", "error", "bug", "not working" |
 
 ### Planning Agents
 
-| Agent | Purpose | Trigger Words |
-|-------|---------|---------------|
-| **Project Designer** | Design new projects from requirements | "help me design a project", "I want to build", "plan a project" |
-| **Project Manager** | Manage projects and tasks | "create project", "track task", "status" |
-| **Architect** | High-level design decisions | "architecture", "design system", "ADR" |
-| **Documentation** | Create/update docs | "document", "README", "write docs" |
+| Agent (subagent_type) | Purpose | Use When User Says |
+|----------------------|---------|-------------------|
+| **project-designer** | Design new projects from requirements | "help me design a project", "I want to build", "plan a project" |
+| **project-manager** | Manage projects and tasks | "create project", "track task", "status" |
+| **architect** | High-level design decisions | "architecture", "design system", "ADR" |
+| **documenter** | Create/update docs | "document", "README", "write docs" |
 
 ## 🔄 Agent Collaboration Workflows
 
+These workflows show the recommended delegation sequence. Claude must explicitly delegate using the Task tool with each subagent_type.
+
 ### New Project Design (From Scratch)
 
-When you ask Claude to help design a new project:
+When user asks to design a new project, Claude should delegate in this order:
 
 ```
-1. Project Designer → Gathers requirements and asks clarifying questions
+1. project-designer → Gathers requirements and asks clarifying questions
    ↓
-2. Project Designer → Explores technology options and trade-offs
+2. project-designer → Explores technology options and trade-offs
    ↓
-3. Project Designer → Designs architecture and creates roadmap
+3. project-designer → Designs architecture and creates roadmap
    ↓
-4. Architect → Creates ADRs for key technology decisions
+4. architect → Creates ADRs for key technology decisions
    ↓
-5. Project Manager → Sets up Vaulty project structure and tasks
+5. project-manager → Sets up Vaulty project structure and tasks
    ↓
-6. Developer → Ready to begin implementation
+6. developer → Ready to begin implementation
 
 Example: "I want to build a task management API with real-time updates"
-→ Project Designer asks about scale, users, tech preferences
+→ Claude delegates to project-designer to gather requirements
 → Explores options (WebSockets vs SSE, PostgreSQL vs MongoDB)
 → Creates architecture diagram and implementation roadmap
-→ Hands off to other agents for execution
+→ Delegates to other agents for execution
 ```
 
 ### Complete Feature Development
 
-When you ask Claude to implement a feature, agents collaborate:
+When user asks to implement a feature, Claude should delegate in this order:
 
 ```
-1. Project Manager → Creates/tracks task
-2. Architect → Designs high-level architecture (if major)
-3. Software Design → Designs code structure
-4. Developer → Implements code
-5. Tester → Writes and runs tests
-   ↓ (if tests fail, back to Developer)
-6. Auditor → Reviews for quality and security
-   ↓ (if review fails, back to Developer)
-7. Git → Commits and pushes code
-8. Documentation → Updates docs
-9. Deployment → Deploys to environments
-10. Project Manager → Marks task complete
+1. project-manager → Creates/tracks task
+2. architect → Designs high-level architecture (if major)
+3. software-designer → Designs code structure
+4. developer → Implements code
+5. tester → Writes and runs tests
+   ↓ (if tests fail, back to developer)
+6. auditor → Reviews for quality and security
+   ↓ (if review fails, back to developer)
+7. git-helper → Commits and pushes code
+8. documenter → Updates docs
+9. deployer → Deploys to environments
+10. project-manager → Marks task complete
 ```
 
 ### Quick Bug Fix
 
 ```
-1. Debugger → Investigates and finds root cause
-2. Developer → Implements fix
-3. Tester → Adds regression test
-4. Auditor → Reviews fix
-5. Git → Commits fix
-6. Deployment → Deploys hotfix
+1. debugger → Investigates and finds root cause
+2. developer → Implements fix
+3. tester → Adds regression test
+4. auditor → Reviews fix
+5. git-helper → Commits fix
+6. deployer → Deploys hotfix
 ```
 
 ## 📝 Rules Files (Best Practices)
@@ -441,12 +443,15 @@ Each language has its own comprehensive guide in `.claude/rules/languages/`:
 ```
 You: "Create a new project for building a task management API"
 
-Claude will:
-1. Use Project Manager Agent
-2. Create projects/task-management-api/
-3. Create overview.md from template
-4. Create initial task breakdown
-5. Reference memory/project-management.md for structure
+Claude should:
+1. Read .claude/agents/project-manager-agent.md for context
+2. Delegate to project-manager subagent with prompt including:
+   - User's request
+   - Reference to projects/_templates/
+   - Reference to .claude/rules/project-management.md
+3. Create projects/task-management-api/
+4. Create overview.md from template
+5. Create initial task breakdown
 ```
 
 ### Example 2: Implement a Feature
@@ -454,15 +459,11 @@ Claude will:
 ```
 You: "Write a Python function to validate email addresses"
 
-Claude will:
-1. Use Developer Agent (references .claude/rules/architecture-design.md)
-2. Write the function with proper error handling
-3. Use Tester Agent (references .claude/rules/testing-qa.md)
-4. Write comprehensive tests
-5. Use Auditor Agent (references .claude/rules/code-review.md)
-6. Review for security and quality
-7. Use Git Helper Agent (references .claude/rules/git-workflow.md)
-8. Commit with proper message
+Claude should delegate in sequence:
+1. developer → Write the function (include .claude/rules/architecture-design.md in prompt)
+2. tester → Write tests (include .claude/rules/testing-qa.md in prompt)
+3. auditor → Review code (include .claude/rules/code-review.md in prompt)
+4. git-helper → Commit changes (include .claude/rules/git-workflow.md in prompt)
 ```
 
 ### Example 3: Deploy Changes
@@ -470,13 +471,13 @@ Claude will:
 ```
 You: "Deploy this to production"
 
-Claude will:
-1. Use Deployment Agent
-2. Reference .claude/rules/deployment.md
-3. Run pre-deployment checklist
-4. Execute deployment steps
-5. Monitor deployment
-6. Report status
+Claude should:
+1. Read .claude/agents/deployment-agent.md for context
+2. Delegate to deployer subagent with prompt including:
+   - Reference to .claude/rules/deployment.md
+   - Pre-deployment checklist from rules
+3. Execute deployment steps
+4. Report status
 ```
 
 ## 🔧 Customization
@@ -498,32 +499,37 @@ Create a new file in `.claude/rules/` for your domain:
 ...
 ```
 
-### Adding Custom Subagents
+### Adding Agent Instruction Files
 
-Create a new subagent in `.claude/agents/` using the official format with YAML frontmatter:
+The `.claude/agents/` directory contains instruction files that Claude reads before delegating to a built-in subagent type. These provide domain-specific context and guidelines.
+
+**Important**: These files do NOT create new subagent types. Claude Code has a fixed set of built-in subagent types (`developer`, `tester`, `auditor`, `git-helper`, `debugger`, `deployer`, `documenter`, `architect`, `software-designer`, `project-manager`, `project-designer`, `Explore`, `Plan`).
+
+Create instruction files following this format:
 
 ```markdown
 ---
-name: your-specialty
-model: claude-sonnet-4-5-20250929
-description: "Specialized agent for [specific task]. Triggered when user requests [specific actions]."
+name: agent-name
+description: When to use this agent (for human reference)
+tools: Read, Write, Edit, Bash, Glob, Grep
 ---
 
-# Your Custom Agent
+# Agent Title
 
 ## Role
-What this agent does...
+What this agent focuses on...
 
-## Rules Referenced
-- `.claude/rules/relevant-file.md`
+## Before Starting
+- Check config.md for user preferences
+- Reference relevant `.claude/rules/` files
 
-## Workflow Steps
+## Guidelines
 1. Step one
 2. Step two
 ...
 ```
 
-Subagents are automatically delegated based on their `description` field in the YAML frontmatter.
+Claude should read the relevant instruction file before calling the Task tool to include context in the delegation prompt.
 
 ### Creating Projects
 
