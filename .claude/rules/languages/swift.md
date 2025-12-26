@@ -1,3 +1,7 @@
+---
+paths: "**/*.swift"
+---
+
 #memory/language #swift #best-practices
 
 # Swift Language Best Practices

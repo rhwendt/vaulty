@@ -1,3 +1,7 @@
+---
+paths: "**/*.rb, **/*.rake, **/Gemfile, **/Rakefile"
+---
+
 #memory/language #ruby #best-practices
 
 # Ruby Language Best Practices
